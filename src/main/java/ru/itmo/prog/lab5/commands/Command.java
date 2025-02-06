@@ -12,10 +12,18 @@ public abstract class Command implements Runnable {
         this.description = description;
     }
 
+    /**
+     * Метод, возвращающий название команды
+     * @return String
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Метод, возвращающий описание команды
+     * @return String
+     */
     public String getDescription() {
         return description;
     }

@@ -29,7 +29,7 @@ public class CommandManager {
 
     /**
      * Метод, возвращающий словарь команд
-     * @return Map\<String, Command\>
+     * @return Map[String, Command]
      */
     public Map<String, Command> getCommands() {
         return commands;

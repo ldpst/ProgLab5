@@ -6,5 +6,9 @@ package ru.itmo.prog.lab5.utils;
  */
 
 public interface Validatable {
+    /**
+     * Метод проверки на валидность
+     * @return boolean
+     */
     boolean isValid();
 }

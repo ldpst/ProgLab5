@@ -1,5 +1,9 @@
 package ru.itmo.prog.lab5.object;
 
+/**
+ * Класс Мпа рейтинга
+ * @author ldpst
+ */
 public enum MpaaRating {
     G,
     PG,

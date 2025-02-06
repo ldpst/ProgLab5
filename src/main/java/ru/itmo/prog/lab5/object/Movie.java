@@ -3,7 +3,13 @@ package ru.itmo.prog.lab5.object;
 import ru.itmo.prog.lab5.utils.Element;
 
 import java.time.ZonedDateTime;
+import java.util.Objects;
 
+/**
+ * Класс фильма
+ *
+ * @author ldpst
+ */
 public class Movie extends Element {
     static long nextId = 1;
 
@@ -32,6 +38,7 @@ public class Movie extends Element {
     /**
      * Метод для сравнения с другим объектом Element
      * Результат меньше нуля, если other больше данного объекта. Результат равен нулю, если элементы равны. Результат больше нуля, если данный объект больше other
+     *
      * @param other объект типа Element для сравнения
      * @return int
      */
@@ -42,6 +49,7 @@ public class Movie extends Element {
 
     /**
      * Метод, возвращающий значение поля id
+     *
      * @return int
      */
     @Override
@@ -51,6 +59,7 @@ public class Movie extends Element {
 
     /**
      * Метод проверки валидности полей класса
+     *
      * @return boolean
      */
     @Override
@@ -61,5 +70,94 @@ public class Movie extends Element {
         if (this.creationDate == null) return false;
         if (this.oscarsCount <= 0 || this.oscarsCount == null) return false;
         return true;
+    }
+
+    /**
+     * Метод, возвращающий значение поля name
+     *
+     * @return String
+     */
+    public String getName() {
+        return this.name;
+    }
+
+    /**
+     * Метод, возвращающий значение поля coordinates
+     *
+     * @return Coordinates
+     */
+    public Coordinates getCoordinates() {
+        return this.coordinates;
+    }
+
+    /**
+     * Метод, возвращающий значение поля creationDate
+     *
+     * @return ZonedDateTime
+     */
+    public java.time.ZonedDateTime getCreationDate() {
+        return this.creationDate;
+    }
+
+    /**
+     * Метод, возвращающий значение поля oscarsCount
+     *
+     * @return Long
+     */
+    public Long getOscarsCount() {
+        return this.oscarsCount;
+    }
+
+    /**
+     * Метод, возвращающий значение поля genre
+     *
+     * @return MovieGenre
+     */
+    public MovieGenre getGenre() {
+        return this.genre;
+    }
+
+    /**
+     * Метод, возвращающий значение поля mpaaRating
+     *
+     * @return MpaaRating
+     */
+    public MpaaRating getMpaaRating() {
+        return this.mpaaRating;
+    }
+
+    /**
+     * Метод, возвращающий значение operator
+     *
+     * @return Person
+     */
+    public Person getOperator() {
+        return this.operator;
+    }
+
+    /**
+     * Метод для сравнения двух элементов Movie
+     *
+     * @param o объект для сравнения
+     * @return boolean
+     */
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Movie movie = (Movie) o;
+        return (this.id == movie.getId() &&
+                Objects.equals(this.name, movie.getName()) &&
+                Objects.equals(this.coordinates, movie.getCoordinates()) &&
+                Objects.equals(this.creationDate, movie.getCreationDate()) &&
+                Objects.equals(this.oscarsCount, getOscarsCount()) &&
+                Objects.equals(this.genre, getGenre()) &&
+                Objects.equals(this.mpaaRating, getMpaaRating()) &&
+                Objects.equals(this.operator, movie.getOperator()));
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.name, this.coordinates, this.creationDate, this.oscarsCount, this.genre, this.mpaaRating, this.operator);
     }
 }
