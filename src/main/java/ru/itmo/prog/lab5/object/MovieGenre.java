@@ -10,4 +10,8 @@ public enum MovieGenre {
     DRAMA,
     MUSICAL,
     HORROR;
+
+    public static MovieGenre checkOf(String s) {
+        return MovieGenre.valueOf(s.toUpperCase());
+    }
 }

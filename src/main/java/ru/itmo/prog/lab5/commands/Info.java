@@ -4,24 +4,21 @@ import ru.itmo.prog.lab5.managers.CollectionManager;
 import ru.itmo.prog.lab5.managers.CommandManager;
 
 import java.io.Console;
+import java.io.PrintStream;
 
 public class Info extends Command {
-    private final Console console;
-    private final CommandManager commandManager;
     private CollectionManager collectionManager;
 
-    public Info(Console console, CommandManager commandManager) {
-        super("info", "вывести в стандартный поток вывода информацию о коллекции (тип, дата инициализации, количество элементов и т.д.)");
-        this.console = console;
-        this.commandManager = commandManager;
+    public Info(PrintStream stream, CommandManager commandManager) {
+        super("info", "вывести в стандартный поток вывода информацию о коллекции (тип, дата инициализации, количество элементов и т.д.)", stream, commandManager);
         this.collectionManager = commandManager.getCollectionManager();
     }
 
     @Override
     public void run(String[] args) {
-        console.printf("Информация о коллекции:\n");
-        console.printf("\tТип: %s\n", collectionManager.getCollectionClass());
-        console.printf("\tРазмер: %s\n", collectionManager.getSize());
-        console.printf("\tВремя инициализации: %s\n", collectionManager.getCreationTime());
+        stream.printf("Информация о коллекции:\n");
+        stream.printf("\tТип: %s\n", collectionManager.getCollectionClass());
+        stream.printf("\tРазмер: %s\n", collectionManager.getSize());
+        stream.printf("\tВремя инициализации: %s\n", collectionManager.getCreationTime());
     }
 }

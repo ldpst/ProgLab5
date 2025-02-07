@@ -10,4 +10,8 @@ public enum MpaaRating {
     PG_13,
     R,
     NC_17;
+
+    public static MpaaRating checkOf(String s) {
+        return MpaaRating.valueOf(s.toUpperCase());
+    }
 }

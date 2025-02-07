@@ -3,6 +3,7 @@ package ru.itmo.prog.lab5.managers;
 import ru.itmo.prog.lab5.commands.*;
 
 import java.io.Console;
+import java.io.PrintStream;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -17,12 +18,12 @@ public class CommandManager {
     private final CollectionManager collectionManager = new CollectionManager();
     private final Scanner scanner;
 
-    public CommandManager(Console console, Scanner scanner) {
+    public CommandManager(PrintStream stream, PrintStream errorStream, Scanner scanner) {
         this.scanner = scanner;
-        addCommand("help", new Help(console, this));
-        addCommand("info", new Info(console, this));
-        addCommand("show", new Show(console, this));
-        addCommand("add", new Add(console, this));
+        addCommand("help", new Help(stream, this));
+        addCommand("info", new Info(stream, this));
+        addCommand("show", new Show(stream, this));
+        addCommand("add", new Add(stream, errorStream, this));
     }
 
     /**

@@ -82,4 +82,9 @@ public class Person implements Validatable {
     public int hashCode() {
         return Objects.hash(name, birthday, weight, passportID);
     }
+
+    @Override
+    public String toString() {
+        return "Имя: " + this.name + "\nДень рождения: " + this.birthday.toString() + "\nВес: " + this.weight + "\nАйди паспорта: " + this.passportID;
+    }
 }

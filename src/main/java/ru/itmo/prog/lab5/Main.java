@@ -11,7 +11,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        CommandManager commandManager = new CommandManager(System.console(), scanner);
+        CommandManager commandManager = new CommandManager(System.out, System.err, scanner);
         Map<String, Command> commands = commandManager.getCommands();
         String nextCommand = scanner.nextLine().trim();
         while (!nextCommand.equals("exit")) {

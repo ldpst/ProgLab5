@@ -163,8 +163,12 @@ public class Movie extends Element {
 
     @Override
     public String toString() {
-        return this.name + "\n" + this.coordinates.toString() + "\n" +
-                this.creationDate.toString() + "\n" + this.oscarsCount.toString() + "\n" +
-                this.genre.toString() + "\n" + this.mpaaRating.toString() + "\n" + this.operator.toString();
+        return "> Имя: " + this.name + "\n" +
+                "> Координаты:\n" + this.coordinates.toString() + "\n" +
+                "> Дата создания: " + this.creationDate.toString() + "\n" +
+                "> Количество оскаров: " + this.oscarsCount.toString() + "\n" +
+                "> Жанр: " + ((this.genre != null) ? (this.genre.toString() + "\n") : "null\n") +
+                "> Мпаа Рейтинг: " + ((this.mpaaRating != null) ? (this.mpaaRating.toString() + "\n") : "null\n") +
+                "> Оператор: " + ((this.operator != null) ? ("\n" + this.operator.toString()) : "null");
     }
 }
