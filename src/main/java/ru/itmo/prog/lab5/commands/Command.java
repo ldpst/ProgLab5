@@ -1,10 +1,12 @@
 package ru.itmo.prog.lab5.commands;
 
+import ru.itmo.prog.lab5.utils.Runable;
+
 /**
  * Класс команда
  * @author ldpst
  */
-public abstract class Command implements Runnable {
+public abstract class Command implements Runable {
     private final String name;
     private final String description;
     public Command(String commandName, String description) {

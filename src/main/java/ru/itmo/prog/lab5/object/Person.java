@@ -1,5 +1,7 @@
 package ru.itmo.prog.lab5.object;
 
+import ru.itmo.prog.lab5.utils.Validatable;
+
 import java.util.Objects;
 
 /**
@@ -7,11 +9,27 @@ import java.util.Objects;
  *
  * @author ldpst
  */
-public class Person {
+public class Person implements Validatable {
     private String name; //Поле не может быть null, Строка не может быть пустой
     private java.util.Date birthday; //Поле может быть null
     private long weight; //Значение поля должно быть больше 0
     private String passportID; //Длина строки не должна быть больше 25, Строка не может быть пустой, Поле не может быть null
+
+    public Person(String name, java.util.Date birthday, long weight, String passportID) {
+        this.name = name;
+        this.birthday = birthday;
+        this.weight = weight;
+        this.passportID = passportID;
+    }
+
+    @Override
+    public boolean isValid() {
+        if (name == null) return false;
+        if (birthday == null) return false;
+        if (weight <= 0) return false;
+        if (passportID == null || passportID.isEmpty() || passportID.length() > 25) return false;
+        return true;
+    }
 
     /**
      * Метод, возвращающий значение поля name

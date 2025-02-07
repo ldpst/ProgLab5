@@ -20,10 +20,10 @@ public class Help extends Command {
     }
 
     @Override
-    public void run() {
+    public void run(String[] args) {
         console.printf("Справка по доступным командам:\n");
         for (Command command : commandManager.getCommands().values()) {
-            console.printf("\t%s : %s", command.getName(), command.getDescription());
+            console.printf("\t%s : %s\n", command.getName(), command.getDescription());
         }
     }
 }

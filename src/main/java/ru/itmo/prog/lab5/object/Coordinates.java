@@ -1,5 +1,7 @@
 package ru.itmo.prog.lab5.object;
 
+import ru.itmo.prog.lab5.utils.Validatable;
+
 import java.util.Objects;
 
 /**
@@ -7,9 +9,14 @@ import java.util.Objects;
  *
  * @author ldpst
  */
-public class Coordinates {
+public class Coordinates implements Validatable {
     private Float x; //Поле не может быть null
     private int y; //Значение поля должно быть больше -486
+
+    public Coordinates(Float x, int y) {
+        this.x = x;
+        this.y = y;
+    }
 
     /**
      * Метод, возвращающий значение поля x
@@ -27,6 +34,12 @@ public class Coordinates {
      */
     public int getY() {
         return y;
+    }
+
+    @Override
+    public boolean isValid() {
+        if (x == null) return false;
+        return y > -486;
     }
 
     @Override

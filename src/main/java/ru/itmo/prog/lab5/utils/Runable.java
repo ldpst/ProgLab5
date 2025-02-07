@@ -7,6 +7,8 @@ package ru.itmo.prog.lab5.utils;
 public interface Runable {
     /**
      * Метод запуска команды
+     *
+     * @param args дополнительные входные данные
      */
-    void run();
+    void run(String[] args);
 }

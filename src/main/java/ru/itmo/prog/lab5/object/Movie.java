@@ -160,4 +160,11 @@ public class Movie extends Element {
     public int hashCode() {
         return Objects.hash(this.name, this.coordinates, this.creationDate, this.oscarsCount, this.genre, this.mpaaRating, this.operator);
     }
+
+    @Override
+    public String toString() {
+        return this.name + "\n" + this.coordinates.toString() + "\n" +
+                this.creationDate.toString() + "\n" + this.oscarsCount.toString() + "\n" +
+                this.genre.toString() + "\n" + this.mpaaRating.toString() + "\n" + this.operator.toString();
+    }
 }
