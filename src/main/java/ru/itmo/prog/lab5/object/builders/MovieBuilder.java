@@ -33,11 +33,13 @@ public class MovieBuilder extends Builder {
      * @return String
      */
     private String readName() {
-        stream.print("> Введите имя:\n$ ");
+        stream.print("> Введите название фильма:\n$ ");
         String name = scanner.nextLine().trim();
         if (name.isEmpty()) {
-            errorStream.println("Имя не должно быть пустым\n");
-            throw new InputCantBeNullException();
+                System.err.println("Название не должно быть пустым");
+                System.out.print("* Повторная попытка ввода\n");
+            return readName();
+//            throw new InputCantBeNullException();
         }
         return name;
     }
@@ -122,7 +124,7 @@ public class MovieBuilder extends Builder {
      * @return Person
      */
     private Person readPerson() {
-        stream.print("* Ввод человека\n");
+        stream.print("* Ввод оператора\n");
         return new PersonBuild(stream, errorStream, scanner).build();
     }
 }
