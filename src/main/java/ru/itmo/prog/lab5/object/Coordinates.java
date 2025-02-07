@@ -54,4 +54,9 @@ public class Coordinates implements Validatable {
     public int hashCode() {
         return Objects.hash(x, y);
     }
+
+    @Override
+    public String toString() {
+        return "Координаты:\n\tx: " + x + "\n\ty: " + y;
+    }
 }

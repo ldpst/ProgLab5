@@ -13,7 +13,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         CommandManager commandManager = new CommandManager(System.console(), scanner);
         Map<String, Command> commands = commandManager.getCommands();
-        String nextCommand = scanner.nextLine();
+        String nextCommand = scanner.nextLine().trim();
         while (!nextCommand.equals("exit")) {
             String[] splitCommand = nextCommand.split(" ");
             commands.get(splitCommand[0]).run(splitCommand);

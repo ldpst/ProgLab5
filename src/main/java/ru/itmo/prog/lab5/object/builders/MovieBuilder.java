@@ -7,6 +7,11 @@ import java.io.Console;
 import java.util.Date;
 import java.util.Scanner;
 
+/**
+ * Класс для создания объекта Movie
+ *
+ * @author ldpst
+ */
 public class MovieBuilder extends Builder {
     private final Console console;
     private final Scanner scanner;
@@ -20,9 +25,14 @@ public class MovieBuilder extends Builder {
     public Movie build() {
         return new Movie(
                 readName(),
-                new Coordinates((float) 12, 10), (long) 1, MovieGenre.DRAMA, MpaaRating.G, new Person("Alex", new Date(), 10, "45674"));
+                readCoordinates(),
+                (long) 1, MovieGenre.DRAMA, MpaaRating.G, new Person("Alex", new Date(), 10, "45674"));
     }
 
+    /**
+     * Метод для чтения имени
+     * @return String считанное имя
+     */
     private String readName() {
         console.printf("> Введите имя:\n$ ");
         String name = scanner.nextLine().trim();
@@ -30,5 +40,18 @@ public class MovieBuilder extends Builder {
             throw new NameCantBeNull();
         }
         return name;
+    }
+
+    private Coordinates readCoordinates() {
+        console.printf("* Ввод координат\n");
+        console.printf("> Введите координату x:\n$ ");
+        String res = scanner.nextLine().trim();
+        Float x;
+        try {
+            x = Float.parseFloat(res);
+        } catch (NumberFormatException e) {
+            throw new NumberFormatException();
+        }
+        return new Coordinates(x, 10);
     }
 }
