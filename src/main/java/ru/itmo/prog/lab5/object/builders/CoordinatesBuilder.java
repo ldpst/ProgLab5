@@ -1,13 +1,13 @@
 package ru.itmo.prog.lab5.object.builders;
 
 import ru.itmo.prog.lab5.object.Coordinates;
+import ru.itmo.prog.lab5.utils.StreamHandler;
 
-import java.io.PrintStream;
 import java.util.Scanner;
 
 public class CoordinatesBuilder extends Builder {
-    public CoordinatesBuilder(PrintStream stream, PrintStream errorStream, Scanner scanner) {
-        super(stream, errorStream, scanner);
+    public CoordinatesBuilder(StreamHandler stream, Scanner scanner) {
+        super(stream, scanner);
     }
 
     @Override
@@ -28,7 +28,7 @@ public class CoordinatesBuilder extends Builder {
         try {
             x = Float.parseFloat(res);
         } catch (NumberFormatException e) {
-            errorStream.println("Координата x должна быть целым или вещественным числом\n");
+            stream.printErr("Координата x должна быть целым или вещественным числом\n");
             throw new NumberFormatException();
         }
         return x;
@@ -45,7 +45,7 @@ public class CoordinatesBuilder extends Builder {
         try {
             y = Integer.parseInt(res);
         } catch (NumberFormatException e) {
-            errorStream.println("Координата y должна быть целым числом\n");
+            stream.printErr("Координата y должна быть целым числом\n");
             throw new NumberFormatException();
         }
         return y;

@@ -1,9 +1,9 @@
 package ru.itmo.prog.lab5.object.builders;
 
 import ru.itmo.prog.lab5.object.Person;
+import ru.itmo.prog.lab5.utils.StreamHandler;
 import ru.itmo.prog.lab5.utils.InputCantBeNullException;
 
-import java.io.PrintStream;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -12,8 +12,8 @@ import java.util.Scanner;
 
 public class PersonBuild extends Builder {
 
-    public PersonBuild(PrintStream stream, PrintStream errorStream, Scanner scanner) {
-        super(stream, errorStream, scanner);
+    public PersonBuild(StreamHandler stream, Scanner scanner) {
+        super(stream, scanner);
     }
 
     @Override
@@ -34,7 +34,7 @@ public class PersonBuild extends Builder {
         stream.print("> Введите имя человека:\n$ ");
         String name = scanner.nextLine().trim();
         if (name.isEmpty()) {
-            errorStream.println("Имя не должно быть пустым");
+            stream.printErr("Имя не должно быть пустым");
             throw new InputCantBeNullException();
         }
         return name;
@@ -48,7 +48,7 @@ public class PersonBuild extends Builder {
         stream.print("> Введите дату рождения человека (формата dd:mm:yyyy):\n$ ");
         String res = scanner.nextLine().trim();
         if (res.isEmpty()) {
-            errorStream.println("Дата рождения не должна быть пуста");
+            stream.printErr("Дата рождения не должна быть пуста");
             throw new InputCantBeNullException();
         }
         DateFormat dateFormat = new SimpleDateFormat("dd:MM:yyyy");
@@ -56,7 +56,7 @@ public class PersonBuild extends Builder {
         try {
             date = dateFormat.parse(res);
         } catch (ParseException e) {
-            errorStream.println("Введенные данные неверного формата");
+            stream.printErr("Введенные данные неверного формата");
             throw new InputCantBeNullException();
         }
         return date;

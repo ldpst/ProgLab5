@@ -1,6 +1,7 @@
 package ru.itmo.prog.lab5.commands;
 
 import ru.itmo.prog.lab5.managers.CommandManager;
+import ru.itmo.prog.lab5.utils.StreamHandler;
 
 import java.io.Console;
 import java.io.PrintStream;
@@ -12,7 +13,7 @@ import java.util.Map;
  */
 public class Help extends Command {
 
-    public Help(PrintStream stream, CommandManager commandManager) {
+    public Help(StreamHandler stream, CommandManager commandManager) {
         super("help", "вывести справку по доступным командам", stream, commandManager);
     }
 

@@ -1,6 +1,7 @@
 package ru.itmo.prog.lab5.managers;
 
 import ru.itmo.prog.lab5.commands.*;
+import ru.itmo.prog.lab5.utils.StreamHandler;
 
 import java.io.Console;
 import java.io.PrintStream;
@@ -18,12 +19,12 @@ public class CommandManager {
     private final CollectionManager collectionManager = new CollectionManager();
     private final Scanner scanner;
 
-    public CommandManager(PrintStream stream, PrintStream errorStream, Scanner scanner) {
+    public CommandManager(StreamHandler stream, Scanner scanner) {
         this.scanner = scanner;
         addCommand("help", new Help(stream, this));
         addCommand("info", new Info(stream, this));
         addCommand("show", new Show(stream, this));
-        addCommand("add", new Add(stream, errorStream, this));
+        addCommand("add", new Add(stream, this));
     }
 
     /**
