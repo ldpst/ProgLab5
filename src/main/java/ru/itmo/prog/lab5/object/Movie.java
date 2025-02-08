@@ -3,6 +3,7 @@ package ru.itmo.prog.lab5.object;
 import ru.itmo.prog.lab5.utils.Element;
 import ru.itmo.prog.lab5.utils.ValidationError;
 
+import java.lang.reflect.Field;
 import java.time.ZonedDateTime;
 import java.util.Objects;
 
@@ -164,8 +165,26 @@ public class Movie extends Element {
     /**
      * Метод, повышающий на 1 значение nextId
      */
-    public static void increaseNextInt() {
+    public static void increaseNextId() {
         nextId++;
+    }
+
+    /**
+     * Метод, задающий значение nextId
+     *
+     * @param newId новое значение
+     */
+    public static void setNextId(int newId) {
+        nextId = newId;
+    }
+
+    /**
+     * Метод, возвращающий поля класса
+     *
+     * @return массив полей класса
+     */
+    public Field[] getField() {
+        return this.getClass().getDeclaredFields();
     }
 
     @Override

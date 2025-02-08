@@ -28,6 +28,14 @@ public abstract class Command implements Runable {
         this(commandName, description, stream, commandManager, 2);
     }
 
+    public void runWithPermission(String[] args) {
+        if (permission < commandManager.getUserPermission()) {
+            stream.printErr("Недостаточно прав для выполнения команды\n");
+            return;
+        }
+        run(args);
+    }
+
     /**
      * Метод, возвращающий название команды
      *

@@ -3,6 +3,7 @@ package ru.itmo.prog.lab5.object;
 import ru.itmo.prog.lab5.utils.Validatable;
 import ru.itmo.prog.lab5.utils.ValidationError;
 
+import java.lang.reflect.Field;
 import java.util.Objects;
 
 /**
@@ -69,6 +70,15 @@ public class Person implements Validatable {
      */
     public String getPassportID() {
         return passportID;
+    }
+
+    /**
+     * Метод, возвращающий поля класса
+     *
+     * @return массив полей класса
+     */
+    public Field[] getField() {
+        return this.getClass().getDeclaredFields();
     }
 
     @Override

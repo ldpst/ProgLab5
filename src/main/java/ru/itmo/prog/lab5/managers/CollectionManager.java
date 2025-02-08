@@ -1,9 +1,10 @@
 package ru.itmo.prog.lab5.managers;
 
 import ru.itmo.prog.lab5.object.*;
-import ru.itmo.prog.lab5.utils.Element;
 
+import java.lang.reflect.Field;
 import java.util.ArrayDeque;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.Deque;
 
@@ -25,20 +26,20 @@ public class CollectionManager {
     /**
      * Метод для добавления movie в файл
      *
-     * @param movie элемент для добавления типа Movie
+     * @param movie элемент для добавления
      */
     public void add(Movie movie) {
         movies.push(movie);
-        Movie.increaseNextInt();
+        Movie.increaseNextId();
     }
 
     /**
-     * Метод для сохранения в файл
+     * Метод для получения типа коллекции
      *
-     * @param filename имя файла, в который будет сохранена коллекция
+     * @return тип коллекции
      */
-    public void save(String filename) {
-        // saving
+    public Class<?> getType() {
+        return movies.getClass();
     }
 
     /**
@@ -46,6 +47,7 @@ public class CollectionManager {
      */
     public void clear() {
         movies = new ArrayDeque<Movie>();
+        Movie.setNextId(1);
     }
 
     /**
@@ -64,6 +66,27 @@ public class CollectionManager {
     }
 
     /**
+     * Возвращает первый элемент в коллекции
+     *
+     * @return первый элемент
+     */
+    public Movie getHead() {
+        if (isEmpty()) {
+            return null;
+        }
+        return movies.getFirst();
+    }
+
+    /**
+     * Метод, проверяющий пуста ли коллекция
+     *
+     * @return результат проверки
+     */
+    public boolean isEmpty() {
+        return movies.isEmpty();
+    }
+
+    /**
      * Метод для удаления элемента по id
      *
      * @param id айди
@@ -74,12 +97,12 @@ public class CollectionManager {
     }
 
     /**
-     * Метод, возвращающий первый элемент
+     * Метод для удаления элемента
      *
-     * @return Movie
+     * @param movie элемент для удаления
      */
-    public Movie getHead() {
-        return movies.getFirst();
+    public void remove(Movie movie) {
+        movies.remove(movie);
     }
 
     /**

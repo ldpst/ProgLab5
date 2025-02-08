@@ -18,6 +18,10 @@ public class Show extends Command {
 
     @Override
     public void run(String[] args) {
+        if (collectionManager.isEmpty()) {
+            stream.printSuccess("Коллекция пуста\n");
+            return;
+        }
         Deque<Movie> movies = collectionManager.getMovies();
         stream.printSuccess("Элементы коллекции:\n");
         int cnt = 1;

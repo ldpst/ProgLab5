@@ -4,8 +4,7 @@ import ru.itmo.prog.lab5.managers.CollectionManager;
 import ru.itmo.prog.lab5.managers.CommandManager;
 import ru.itmo.prog.lab5.utils.StreamHandler;
 
-import java.io.Console;
-import java.io.PrintStream;
+import java.util.Map;
 
 public class Info extends Command {
     private final CollectionManager collectionManager;
@@ -17,9 +16,13 @@ public class Info extends Command {
 
     @Override
     public void run(String[] args) {
+        CommandManager adminCM = new CommandManager(stream, commandManager.getScanner(), 1);
         stream.printSuccess("Информация о коллекции:\n");
-        stream.printf("> Тип: %s\n", collectionManager.getCollectionClass());
-        stream.printf("> Размер: %s\n", collectionManager.getSize());
-        stream.printf("> Время инициализации: %s\n", collectionManager.getCreationTime());
+        Map<String, Command> commands = adminCM.getCommands();
+        commands.get("type").runWithPermission(null);
+        commands.get("size").runWithPermission(null);
+        stream.printSuccess("Время инициализации:\n");
+        stream.printf("> %s\n", collectionManager.getCreationTime());
+        commands.get("head").runWithPermission(null);
     }
 }

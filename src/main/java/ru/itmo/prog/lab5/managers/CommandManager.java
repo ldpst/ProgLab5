@@ -29,6 +29,12 @@ public class CommandManager {
         addCommand("show", new Show(stream, this));
         addCommand("add", new Add(stream, this));
         addCommand("update", new Update(stream, this));
+        addCommand("remove_by_id", new RemoveById(stream, this));
+        addCommand("clear", new Clear(stream, this));
+        addCommand("head", new Head(stream, this));
+        addCommand("save", new Save(stream, this));
+        addCommand("type", new Type(stream, this));
+        addCommand("size", new Size(stream, this));
     }
 
     /**
