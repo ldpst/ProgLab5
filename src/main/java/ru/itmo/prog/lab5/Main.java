@@ -12,7 +12,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        CommandManager commandManager = new CommandManager(new StreamHandler(System.out), scanner);
+        CommandManager commandManager = new CommandManager(new StreamHandler(System.out), scanner, 2);
         Map<String, Command> commands = commandManager.getCommands();
         String nextCommand = scanner.nextLine().trim();
         while (!nextCommand.equals("exit")) {

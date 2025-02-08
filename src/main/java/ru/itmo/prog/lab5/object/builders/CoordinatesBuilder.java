@@ -4,6 +4,7 @@ import ru.itmo.prog.lab5.object.Coordinates;
 import ru.itmo.prog.lab5.utils.StreamHandler;
 
 import java.util.Scanner;
+import java.util.function.Supplier;
 
 public class CoordinatesBuilder extends Builder {
     public CoordinatesBuilder(StreamHandler stream, Scanner scanner) {
@@ -19,9 +20,10 @@ public class CoordinatesBuilder extends Builder {
 
     /**
      * Метод для чтения координаты X
-     * @return float
+     *
+     * @return Найденное число
      */
-    private float readX() {
+    private Float readX() {
         stream.print("> Введите координату x:\n$ ");
         String res = scanner.nextLine().trim();
         float x;
@@ -29,14 +31,16 @@ public class CoordinatesBuilder extends Builder {
             x = Float.parseFloat(res);
         } catch (NumberFormatException e) {
             stream.printErr("Координата x должна быть целым или вещественным числом\n");
-            throw new NumberFormatException();
+            return (Float) tryAgain(this::readX);
+//            throw new NumberFormatException();
         }
         return x;
     }
 
     /**
      * Метод для чтения координаты Y
-     * @return int
+     *
+     * @return Найденное число
      */
     private int readY() {
         stream.print("> Введите координату y:\n$ ");
@@ -46,8 +50,20 @@ public class CoordinatesBuilder extends Builder {
             y = Integer.parseInt(res);
         } catch (NumberFormatException e) {
             stream.printErr("Координата y должна быть целым числом\n");
-            throw new NumberFormatException();
+            return (Integer) tryAgain(this::readY);
+//            throw new NumberFormatException();
         }
         return y;
+    }
+
+    /**
+     * Метод для запроса повторного ввода
+     *
+     * @param action метод, который запустится повторно
+     * @return Объект-результат переданной функции
+     */
+    private Object tryAgain(Supplier<Object> action) {
+        stream.print("* Повторная попытка ввода\n");
+        return action.get();
     }
 }

@@ -1,6 +1,7 @@
 package ru.itmo.prog.lab5.object;
 
 import ru.itmo.prog.lab5.utils.Validatable;
+import ru.itmo.prog.lab5.utils.ValidationError;
 
 import java.util.Objects;
 
@@ -20,6 +21,9 @@ public class Person implements Validatable {
         this.birthday = birthday;
         this.weight = weight;
         this.passportID = passportID;
+        if (!isValid()) {
+            throw new ValidationError("Person");
+        }
     }
 
     @Override
@@ -32,36 +36,36 @@ public class Person implements Validatable {
     }
 
     /**
-     * Метод, возвращающий значение поля name
+     * Метод, возвращающий поле name
      *
-     * @return String
+     * @return name
      */
     public String getName() {
         return name;
     }
 
     /**
-     * Метод, возвращающий значение поля birthday
+     * Метод, возвращающий поле birthday
      *
-     * @return Date
+     * @return birthday
      */
     public java.util.Date getBirthday() {
         return birthday;
     }
 
     /**
-     * Метод, возвращающий значение поля weight
+     * Метод, возвращающий поле weight
      *
-     * @return long
+     * @return weight
      */
     public long getWeight() {
         return weight;
     }
 
     /**
-     * Метод, возвращающий значение поля passportID
+     * Метод, возвращающий поле passportID
      *
-     * @return Date
+     * @return passportID
      */
     public String getPassportID() {
         return passportID;

@@ -17,5 +17,11 @@ public abstract class Builder {
         this.scanner = scanner;
     }
 
+
+    /**
+     * Метод для заполнения объекта данными, используя стандартный ввод
+     *
+     * @return Заполненный объект
+     */
     abstract public Object build();
 }

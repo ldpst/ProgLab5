@@ -1,6 +1,7 @@
 package ru.itmo.prog.lab5.object;
 
 import ru.itmo.prog.lab5.utils.Validatable;
+import ru.itmo.prog.lab5.utils.ValidationError;
 
 import java.util.Objects;
 
@@ -16,12 +17,15 @@ public class Coordinates implements Validatable {
     public Coordinates(Float x, int y) {
         this.x = x;
         this.y = y;
+        if (!isValid()) {
+            throw new ValidationError("Coordinates");
+        }
     }
 
     /**
      * Метод, возвращающий значение поля x
      *
-     * @return Float
+     * @return x
      */
     public Float getX() {
         return x;
@@ -30,7 +34,7 @@ public class Coordinates implements Validatable {
     /**
      * Метод, возвращающий значение поля y
      *
-     * @return int
+     * @return y
      */
     public int getY() {
         return y;

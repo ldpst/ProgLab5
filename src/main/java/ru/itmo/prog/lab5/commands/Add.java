@@ -13,18 +13,17 @@ import java.io.PrintStream;
 import java.util.Scanner;
 
 public class Add extends Command {
-    private CollectionManager collectionManager;
+    private final CollectionManager collectionManager;
 
     public Add(StreamHandler stream, CommandManager commandManager) {
-        super("add", "добавить новый элемент в коллекцию", stream, commandManager);
+        super("add {Movie}", "добавить новый элемент в коллекцию", stream, commandManager);
         this.collectionManager = commandManager.getCollectionManager();
     }
 
     @Override
     public void run(String[] args) {
-        MovieBuilder movieBuilder = new MovieBuilder(stream, commandManager.getScanner());
-        Movie movie = movieBuilder.build();
+        Movie movie = new MovieBuilder(stream, commandManager.getScanner()).build();
         collectionManager.add(movie);
-        System.out.println(movie.toString());
+        stream.printSuccess("Объект успешно добавлен\n");
     }
 }

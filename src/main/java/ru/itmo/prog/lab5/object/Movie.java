@@ -1,6 +1,7 @@
 package ru.itmo.prog.lab5.object;
 
 import ru.itmo.prog.lab5.utils.Element;
+import ru.itmo.prog.lab5.utils.ValidationError;
 
 import java.time.ZonedDateTime;
 import java.util.Objects;
@@ -13,7 +14,7 @@ import java.util.Objects;
 public class Movie extends Element {
     static long nextId = 1;
 
-    private final long id; //Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
+    private long id; //Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
     private String name; //Поле не может быть null, Строка не может быть пустой
     private Coordinates coordinates; //Поле не может быть null
     private java.time.ZonedDateTime creationDate; //Поле не может быть null, Значение этого поля должно генерироваться автоматически
@@ -24,7 +25,6 @@ public class Movie extends Element {
 
     public Movie(String name, Coordinates coordinates, Long oscarsCount, MovieGenre genre, MpaaRating mpaaRating, Person operator) {
         this.id = nextId;
-        nextId++;
         this.name = name;
         this.coordinates = coordinates;
         this.creationDate = ZonedDateTime.now();
@@ -32,15 +32,31 @@ public class Movie extends Element {
         this.genre = genre;
         this.mpaaRating = mpaaRating;
         this.operator = operator;
+        if (!isValid()) {
+            throw new ValidationError("Movie");
+        }
     }
 
+    /**
+     * Заполняет поля текущего объекта данными из другого объекта
+     *
+     * @param movie другой объект
+     */
+    public void update(Movie movie) {
+        this.name = movie.getName();
+        this.coordinates = movie.getCoordinates();
+        this.creationDate = movie.getCreationDate();
+        this.oscarsCount = movie.getOscarsCount();
+        this.genre = movie.getGenre();
+        this.mpaaRating = movie.getMpaaRating();
+        this.operator = movie.getOperator();
+    }
 
     /**
      * Метод для сравнения с другим объектом Element
-     * Результат меньше нуля, если other больше данного объекта. Результат равен нулю, если элементы равны. Результат больше нуля, если данный объект больше other
      *
      * @param other объект типа Element для сравнения
-     * @return int
+     * @return Результат меньше нуля, если other больше данного объекта. Результат равен нулю, если элементы равны. Результат больше нуля, если данный объект больше other
      */
     @Override
     public int compareTo(Element other) {
@@ -48,9 +64,9 @@ public class Movie extends Element {
     }
 
     /**
-     * Метод, возвращающий значение поля id
+     * Метод, возвращающий поле id
      *
-     * @return int
+     * @return id
      */
     @Override
     public long getId() {
@@ -58,9 +74,19 @@ public class Movie extends Element {
     }
 
     /**
+     * Метод, присваивающий значение полю id
+     *
+     * @param id новое id
+     */
+    @Override
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    /**
      * Метод проверки валидности полей класса
      *
-     * @return boolean
+     * @return результат проверки
      */
     @Override
     public boolean isValid() {
@@ -73,74 +99,75 @@ public class Movie extends Element {
     }
 
     /**
-     * Метод, возвращающий значение поля name
+     * Метод, возвращающий поле name
      *
-     * @return String
+     * @return name
      */
     public String getName() {
         return this.name;
     }
 
     /**
-     * Метод, возвращающий значение поля coordinates
+     * Метод, возвращающий поле coordinates
      *
-     * @return Coordinates
+     * @return coordinates
      */
     public Coordinates getCoordinates() {
         return this.coordinates;
     }
 
     /**
-     * Метод, возвращающий значение поля creationDate
+     * Метод, возвращающий поле creationDate
      *
-     * @return ZonedDateTime
+     * @return creationDate
      */
     public java.time.ZonedDateTime getCreationDate() {
         return this.creationDate;
     }
 
     /**
-     * Метод, возвращающий значение поля oscarsCount
+     * Метод, возвращающий поле oscarsCount
      *
-     * @return Long
+     * @return oscarsCount
      */
     public Long getOscarsCount() {
         return this.oscarsCount;
     }
 
     /**
-     * Метод, возвращающий значение поля genre
+     * Метод, возвращающий поле genre
      *
-     * @return MovieGenre
+     * @return genre
      */
     public MovieGenre getGenre() {
         return this.genre;
     }
 
     /**
-     * Метод, возвращающий значение поля mpaaRating
+     * Метод, возвращающий поле mpaaRating
      *
-     * @return MpaaRating
+     * @return mpaaRating
      */
     public MpaaRating getMpaaRating() {
         return this.mpaaRating;
     }
 
     /**
-     * Метод, возвращающий значение operator
+     * Метод, возвращающий поле operator
      *
-     * @return Person
+     * @return operator
      */
     public Person getOperator() {
         return this.operator;
     }
 
     /**
-     * Метод для сравнения двух элементов Movie
-     *
-     * @param o объект для сравнения
-     * @return boolean
+     * Метод, повышающий на 1 значение nextId
      */
+    public static void increaseNextInt() {
+        nextId++;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -163,7 +190,8 @@ public class Movie extends Element {
 
     @Override
     public String toString() {
-        return "> Имя: " + this.name + "\n" +
+        return "> Айди: " + this.id + "\n" +
+                "> Название: " + this.name + "\n" +
                 "> Координаты:\n" + this.coordinates.toString() + "\n" +
                 "> Дата создания: " + this.creationDate.toString() + "\n" +
                 "> Количество оскаров: " + this.oscarsCount.toString() + "\n" +

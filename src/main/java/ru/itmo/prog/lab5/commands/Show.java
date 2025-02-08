@@ -9,7 +9,7 @@ import java.io.PrintStream;
 import java.util.Deque;
 
 public class Show extends Command {
-    private CollectionManager collectionManager;
+    private final CollectionManager collectionManager;
 
     public Show(StreamHandler stream, CommandManager commandManager) {
         super("show", "вывести в стандартный поток вывода все элементы коллекции в строковом представлении", stream, commandManager);
@@ -19,9 +19,11 @@ public class Show extends Command {
     @Override
     public void run(String[] args) {
         Deque<Movie> movies = collectionManager.getMovies();
-        stream.printf("Элементы коллекции:\n");
+        stream.printSuccess("Элементы коллекции:\n");
+        int cnt = 1;
         for (Movie movie : movies) {
-            stream.printf("\n%s\n", movie.toString());
+            stream.printSuccessf("Элемент №%s:\n", cnt++);
+            stream.printf("%s\n", movie.toString());
         }
     }
 }

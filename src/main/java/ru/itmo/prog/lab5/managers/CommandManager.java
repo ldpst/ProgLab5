@@ -6,6 +6,7 @@ import ru.itmo.prog.lab5.utils.StreamHandler;
 import java.io.Console;
 import java.io.PrintStream;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -15,16 +16,19 @@ import java.util.Scanner;
  * @author ldpst
  */
 public class CommandManager {
-    private final Map<String, Command> commands = new HashMap<>();
+    private final Map<String, Command> commands = new LinkedHashMap<>();
     private final CollectionManager collectionManager = new CollectionManager();
     private final Scanner scanner;
+    private final int userPermission;
 
-    public CommandManager(StreamHandler stream, Scanner scanner) {
+    public CommandManager(StreamHandler stream, Scanner scanner, int userPermission) {
         this.scanner = scanner;
+        this.userPermission = userPermission;
         addCommand("help", new Help(stream, this));
         addCommand("info", new Info(stream, this));
         addCommand("show", new Show(stream, this));
         addCommand("add", new Add(stream, this));
+        addCommand("update", new Update(stream, this));
     }
 
     /**
@@ -40,27 +44,35 @@ public class CommandManager {
     /**
      * Метод, возвращающий словарь команд
      *
-     * @return Map[String, Command]
+     * @return словарь из названий и команд
      */
     public Map<String, Command> getCommands() {
         return commands;
     }
 
     /**
-     * Метод, возвращающий CollectionManager
+     * Метод, возвращающий поле collectionManager
      *
-     * @return CollectionManager
+     * @return collectionManager
      */
     public CollectionManager getCollectionManager() {
         return collectionManager;
     }
 
     /**
-     * Метод, возвращающий Scanner
+     * Метод, возвращающий поле scanner
      *
-     * @return Scanner
+     * @return scanner
      */
     public Scanner getScanner() {
         return scanner;
+    }
+
+    /**
+     * Метод, возвращающий поле userPermission
+     * @return userPermission
+     */
+    public int getUserPermission() {
+        return userPermission;
     }
 }

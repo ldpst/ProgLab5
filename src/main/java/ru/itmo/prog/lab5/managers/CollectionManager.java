@@ -2,7 +2,6 @@ package ru.itmo.prog.lab5.managers;
 
 import ru.itmo.prog.lab5.object.*;
 import ru.itmo.prog.lab5.utils.Element;
-import ru.itmo.prog.lab5.utils.ElementNotFoundException;
 
 import java.util.ArrayDeque;
 import java.util.Date;
@@ -30,6 +29,7 @@ public class CollectionManager {
      */
     public void add(Movie movie) {
         movies.push(movie);
+        Movie.increaseNextInt();
     }
 
     /**
@@ -54,13 +54,13 @@ public class CollectionManager {
      * @param id айди
      * @return Movie
      */
-    public Element findElemById(long id) {
-        for (Element movie : movies) {
+    public Movie findElemById(long id) {
+        for (Movie movie : movies) {
             if (movie.getId() == id) {
                 return movie;
             }
         }
-        throw new ElementNotFoundException();
+        return null;
     }
 
     /**
