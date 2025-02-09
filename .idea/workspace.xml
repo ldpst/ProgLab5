@@ -1,38 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="ProgLab5.main:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2d96a76b-2679-40b6-8eff-b8e4bdf322c6" name="Changes" comment="upload">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/commands/Clear.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/commands/Head.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/commands/RemoveById.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/commands/Save.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/commands/Size.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/commands/Type.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/object/builders/IDBuilder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/ru/itmo/prog/lab5/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/ru/itmo/prog/lab5/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/ru/itmo/prog/lab5/commands/Add.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/ru/itmo/prog/lab5/commands/Add.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/ru/itmo/prog/lab5/commands/Command.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/ru/itmo/prog/lab5/commands/Command.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/ru/itmo/prog/lab5/commands/Info.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/ru/itmo/prog/lab5/commands/Info.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/ru/itmo/prog/lab5/commands/Show.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/ru/itmo/prog/lab5/commands/Show.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/ru/itmo/prog/lab5/managers/CollectionManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/ru/itmo/prog/lab5/managers/CollectionManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/ru/itmo/prog/lab5/managers/CommandManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/ru/itmo/prog/lab5/managers/CommandManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/ru/itmo/prog/lab5/object/Coordinates.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/ru/itmo/prog/lab5/object/Coordinates.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/ru/itmo/prog/lab5/object/Movie.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/ru/itmo/prog/lab5/object/Movie.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/ru/itmo/prog/lab5/object/Person.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/ru/itmo/prog/lab5/object/Person.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/commands/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/commands/Command.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/commands/Info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/commands/Info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/commands/Show.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/commands/Show.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/commands/Update.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/commands/Update.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/managers/CollectionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/managers/CollectionManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/managers/CommandManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/managers/CommandManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/object/Coordinates.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/object/Coordinates.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/object/Movie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/object/Movie.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/object/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/object/Person.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/commands/Save.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/commands/Save.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,31 +76,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.ProgLab5 [:ru.itmo.prog.lab5.Main.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.ProgLab5 [dependencies].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.ProgLab5 [test].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.ProgLab5.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Files/Projects/java/ProgLab5&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;onboarding.tips.debug.path&quot;: &quot;D:/Files/Projects/java/ProgLab5/src/main/java/org/example/Main.java&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;File.Encoding&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Run",
+    "Gradle.ProgLab5 [:ru.itmo.prog.lab5.Main.main()].executor": "Run",
+    "Gradle.ProgLab5 [dependencies].executor": "Run",
+    "Gradle.ProgLab5 [test].executor": "Run",
+    "Gradle.ProgLab5.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/Files/Projects/java/ProgLab5",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "onboarding.tips.debug.path": "D:/Files/Projects/java/ProgLab5/src/main/java/org/example/Main.java",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "File.Encoding",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="ru.itmo.prog.lab5.utils" />
@@ -255,7 +234,8 @@
       <workItem from="1738922627901" duration="5423000" />
       <workItem from="1738936733609" duration="13166000" />
       <workItem from="1738958731005" duration="17273000" />
-      <workItem from="1739034668213" duration="11098000" />
+      <workItem from="1739034668213" duration="11129000" />
+      <workItem from="1739052663920" duration="7033000" />
     </task>
     <task id="LOCAL-00001" summary="upload">
       <option name="closed" value="true" />
@@ -353,7 +333,15 @@
       <option name="project" value="LOCAL" />
       <updated>1738980479000</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="upload">
+      <option name="closed" value="true" />
+      <created>1739045942053</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1739045942053</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

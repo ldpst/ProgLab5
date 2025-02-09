@@ -8,7 +8,13 @@ import ru.itmo.prog.lab5.utils.StreamHandler;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.lang.reflect.Field;
+import java.util.LinkedHashMap;
 
+/**
+ * Класс команды Save
+ *
+ * @author ldpst
+ */
 public class Save extends Command {
     private final CollectionManager collectionManager;
 
@@ -20,16 +26,84 @@ public class Save extends Command {
     @Override
     public void run(String[] args) {
         String header = countFields(Movie.class, "");
-        String filePath = System.getenv("Lab5FileName");
-        try (FileOutputStream fos = new FileOutputStream(filePath)) {
+        String[] fieldNames = header.split(",");
+        ProcessBuilder processBuilder = new ProcessBuilder();
+        String filePath = processBuilder.environment().get("Lab5FileName");
+        if (filePath == null) {
+            stream.printErr("Переменная окружения с названием файла Lab5FileName пуста\n");
+            return;
+        }
+        try (FileOutputStream fos = new FileOutputStream(filePath + ".csv")) {
             fos.write((header + "\n").getBytes());
-            // ДОПИСАТЬ
-
+            for (Movie movie : collectionManager.getMovies()) {
+                String csvLine = makeCsvLineFromObject(movie, fieldNames);
+                fos.write((csvLine + "\n").getBytes());
+            }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        stream.printSuccess("Коллекция успешно сохранена в файл " + filePath + ".csv\n");
     }
 
+    /**
+     * Метод для создания строки
+     *
+     * @param object     объект, значения полей которого будут расставлены по формату
+     * @param fieldNames названия полей
+     * @return строка в формате csv
+     */
+    private String makeCsvLineFromObject(Object object, String[] fieldNames) {
+        LinkedHashMap<String, Object> fieldValues = loadFieldsFromObject(object, new LinkedHashMap<String, Object>(), "");
+        StringBuilder res = new StringBuilder();
+        for (String fieldName : fieldNames) {
+            Object value = fieldValues.get(fieldName);
+            if (value == null) {
+                res.append("null,");
+            } else {
+                res.append(value).append(",");
+            }
+        }
+        if (!res.isEmpty()) {
+            return res.substring(0, res.length() - 1);
+        }
+        return res.toString();
+    }
+
+    /**
+     * Метод, рекурсивно достающий из объекта значения всех его полей и подклассов
+     *
+     * @param object Обрабатываемый объект
+     * @param res    Словарь, в котором будет результат обработки
+     * @param prefix Строка для создания полного имени поля
+     * @return Словарь формата [полное имя поля, содержимое]
+     */
+    private LinkedHashMap<String, Object> loadFieldsFromObject(Object object, LinkedHashMap<String, Object> res, String prefix) {
+        Class<?> clazz = object.getClass();
+        Field[] fields = clazz.getDeclaredFields();
+        for (Field field : fields) {
+            field.setAccessible(true);
+            try {
+                Object value = field.get(object);
+                String fieldName = prefix + field.getName();
+                if (!field.getType().isPrimitive() && !field.getType().getName().startsWith("java.") && !field.getType().isEnum()) {
+                    loadFieldsFromObject(value, res, fieldName + ".");
+                } else {
+                    res.put(fieldName, value);
+                }
+            } catch (IllegalAccessException e) {
+                continue;
+            }
+        }
+        return res;
+    }
+
+    /**
+     * Метод, рекурсивно достающий названия полей
+     *
+     * @param clazz  Обрабатываемый класс
+     * @param prefix Строка для создания полного имени поля
+     * @return Строка csv формата
+     */
     private String countFields(Class<?> clazz, String prefix) {
         Field[] fields = clazz.getDeclaredFields();
         StringBuilder res = new StringBuilder();
@@ -46,7 +120,7 @@ public class Save extends Command {
                 continue;
             }
         }
-        if (prefix.isEmpty()) {
+        if (prefix.isEmpty() && !res.isEmpty()) {
             return res.substring(0, res.length() - 1);
         }
         return res.toString();
