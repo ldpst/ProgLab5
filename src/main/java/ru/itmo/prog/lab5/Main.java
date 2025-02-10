@@ -1,11 +1,9 @@
 package ru.itmo.prog.lab5;
 
 import ru.itmo.prog.lab5.commands.Command;
-import ru.itmo.prog.lab5.managers.CollectionManager;
 import ru.itmo.prog.lab5.managers.CommandManager;
 import ru.itmo.prog.lab5.utils.StreamHandler;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -19,9 +17,13 @@ public class Main {
         String nextCommand = scanner.nextLine().trim();
         while (!nextCommand.equals("exit")) {
             String[] splitCommand = nextCommand.split(" ");
-            commands.get(splitCommand[0]).runWithPermission(splitCommand);
+            try {
+                commands.get(splitCommand[0]).runWithPermission(splitCommand);
+            } catch (Exception e) {
+                stream.printErr("Команда не распознана\n");
+            }
             stream.print("$ ");
-            nextCommand = scanner.nextLine();
+            nextCommand = scanner.nextLine().trim();
         }
     }
 }

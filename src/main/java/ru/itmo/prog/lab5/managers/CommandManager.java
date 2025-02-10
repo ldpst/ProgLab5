@@ -35,6 +35,7 @@ public class CommandManager {
         addCommand("save", new Save(stream, this));
         addCommand("type", new Type(stream, this));
         addCommand("size", new Size(stream, this));
+        addCommand("execute_script", new ExecuteScript(stream, this));
     }
 
     /**
