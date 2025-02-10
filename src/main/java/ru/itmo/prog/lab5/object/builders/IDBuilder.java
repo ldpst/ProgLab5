@@ -1,5 +1,6 @@
 package ru.itmo.prog.lab5.object.builders;
 
+import ru.itmo.prog.lab5.utils.ScannerHandler;
 import ru.itmo.prog.lab5.utils.StreamHandler;
 
 import java.util.Scanner;
@@ -8,13 +9,13 @@ public class IDBuilder extends Builder {
     private final String[] args;
     private final int pos;
 
-    public IDBuilder(StreamHandler stream, Scanner scanner, String[] args, int pos) {
+    public IDBuilder(StreamHandler stream, ScannerHandler scanner, String[] args, int pos) {
         super(stream, scanner);
         this.args = args;
         this.pos = pos;
     }
 
-    public IDBuilder(StreamHandler stream, Scanner scanner, String[] args) {
+    public IDBuilder(StreamHandler stream, ScannerHandler scanner, String[] args) {
         this(stream, scanner, args, 1);
     }
 

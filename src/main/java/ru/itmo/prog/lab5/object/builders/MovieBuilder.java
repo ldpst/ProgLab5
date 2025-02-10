@@ -1,6 +1,7 @@
 package ru.itmo.prog.lab5.object.builders;
 
 import ru.itmo.prog.lab5.object.*;
+import ru.itmo.prog.lab5.utils.ScannerHandler;
 import ru.itmo.prog.lab5.utils.StreamHandler;
 
 import java.util.Arrays;
@@ -13,7 +14,7 @@ import java.util.function.Supplier;
  * @author ldpst
  */
 public class MovieBuilder extends Builder {
-    public MovieBuilder(StreamHandler stream, Scanner scanner) {
+    public MovieBuilder(StreamHandler stream, ScannerHandler scanner) {
         super(stream, scanner);
     }
 

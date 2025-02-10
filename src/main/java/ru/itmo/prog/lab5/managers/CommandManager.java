@@ -1,6 +1,7 @@
 package ru.itmo.prog.lab5.managers;
 
 import ru.itmo.prog.lab5.commands.*;
+import ru.itmo.prog.lab5.utils.ScannerHandler;
 import ru.itmo.prog.lab5.utils.StreamHandler;
 
 import java.io.Console;
@@ -18,10 +19,10 @@ import java.util.Scanner;
 public class CommandManager {
     private final Map<String, Command> commands = new LinkedHashMap<>();
     private final CollectionManager collectionManager = new CollectionManager();
-    private final Scanner scanner;
+    private final ScannerHandler scanner;
     private final int userPermission;
 
-    public CommandManager(StreamHandler stream, Scanner scanner, int userPermission) {
+    public CommandManager(StreamHandler stream, ScannerHandler scanner, int userPermission) {
         this.scanner = scanner;
         this.userPermission = userPermission;
         addCommand("help", new Help(stream, this));
@@ -71,7 +72,7 @@ public class CommandManager {
      *
      * @return scanner
      */
-    public Scanner getScanner() {
+    public ScannerHandler getScanner() {
         return scanner;
     }
 

@@ -2,6 +2,7 @@ package ru.itmo.prog.lab5;
 
 import ru.itmo.prog.lab5.commands.Command;
 import ru.itmo.prog.lab5.managers.CommandManager;
+import ru.itmo.prog.lab5.utils.ScannerHandler;
 import ru.itmo.prog.lab5.utils.StreamHandler;
 
 import java.util.Map;
@@ -9,7 +10,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        ScannerHandler scanner = new ScannerHandler(new Scanner(System.in));
         StreamHandler stream = new StreamHandler(System.out);
         CommandManager commandManager = new CommandManager(stream, scanner, 2);
         Map<String, Command> commands = commandManager.getCommands();

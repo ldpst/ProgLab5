@@ -2,6 +2,7 @@ package ru.itmo.prog.lab5.object.builders;
 
 import ru.itmo.prog.lab5.object.Person;
 import ru.itmo.prog.lab5.utils.InputCantBeNullException;
+import ru.itmo.prog.lab5.utils.ScannerHandler;
 import ru.itmo.prog.lab5.utils.StreamHandler;
 
 import java.text.DateFormat;
@@ -13,7 +14,7 @@ import java.util.function.Supplier;
 
 public class PersonBuild extends Builder {
 
-    public PersonBuild(StreamHandler stream, Scanner scanner) {
+    public PersonBuild(StreamHandler stream, ScannerHandler scanner) {
         super(stream, scanner);
     }
 

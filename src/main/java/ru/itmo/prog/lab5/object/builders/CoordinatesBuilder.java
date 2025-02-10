@@ -1,13 +1,14 @@
 package ru.itmo.prog.lab5.object.builders;
 
 import ru.itmo.prog.lab5.object.Coordinates;
+import ru.itmo.prog.lab5.utils.ScannerHandler;
 import ru.itmo.prog.lab5.utils.StreamHandler;
 
 import java.util.Scanner;
 import java.util.function.Supplier;
 
 public class CoordinatesBuilder extends Builder {
-    public CoordinatesBuilder(StreamHandler stream, Scanner scanner) {
+    public CoordinatesBuilder(StreamHandler stream, ScannerHandler scanner) {
         super(stream, scanner);
     }
 

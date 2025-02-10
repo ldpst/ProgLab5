@@ -10,19 +10,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2d96a76b-2679-40b6-8eff-b8e4bdf322c6" name="Changes" comment="upload">
-      <change afterPath="$PROJECT_DIR$/config/123.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/commands/ExecuteScript.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/utils/MyBufferedReader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/utils/Reader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/utils/ScannerHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/ru/itmo/prog/lab5/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/ru/itmo/prog/lab5/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/ru/itmo/prog/lab5/managers/CommandManager.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/ru/itmo/prog/lab5/managers/ReaderManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/123.txt" beforeDir="false" afterPath="$PROJECT_DIR$/config/123.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/ru/itmo/prog/lab5/object/builders/Builder.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/ru/itmo/prog/lab5/object/builders/Builder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/ru/itmo/prog/lab5/object/builders/CoordinatesBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/ru/itmo/prog/lab5/object/builders/CoordinatesBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/ru/itmo/prog/lab5/object/builders/MovieBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/ru/itmo/prog/lab5/object/builders/MovieBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/ru/itmo/prog/lab5/object/builders/PersonBuild.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/ru/itmo/prog/lab5/object/builders/PersonBuild.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/commands/Save.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/commands/Save.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/commands/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/commands/Command.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/commands/ExecuteScript.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/commands/ExecuteScript.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/managers/CommandManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/managers/CommandManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/managers/ReaderManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/utils/StreamHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/utils/StreamHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/object/builders/Builder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/object/builders/Builder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/object/builders/CoordinatesBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/object/builders/CoordinatesBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/object/builders/IDBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/object/builders/IDBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/object/builders/MovieBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/object/builders/MovieBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/object/builders/PersonBuild.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/object/builders/PersonBuild.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/utils/MyBufferedReader.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -252,6 +256,8 @@
       <workItem from="1739090292359" duration="2523000" />
       <workItem from="1739108748263" duration="6746000" />
       <workItem from="1739123948212" duration="3672000" />
+      <workItem from="1739185509282" duration="31000" />
+      <workItem from="1739203950967" duration="9343000" />
     </task>
     <task id="LOCAL-00001" summary="upload">
       <option name="closed" value="true" />
@@ -357,7 +363,15 @@
       <option name="project" value="LOCAL" />
       <updated>1739045942053</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="upload">
+      <option name="closed" value="true" />
+      <created>1739185530038</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1739185530038</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

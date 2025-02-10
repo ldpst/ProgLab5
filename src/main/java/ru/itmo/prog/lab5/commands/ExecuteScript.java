@@ -1,7 +1,7 @@
 package ru.itmo.prog.lab5.commands;
 
 import ru.itmo.prog.lab5.managers.CommandManager;
-import ru.itmo.prog.lab5.utils.MyBufferedReader;
+import ru.itmo.prog.lab5.utils.ScannerHandler;
 import ru.itmo.prog.lab5.utils.StreamHandler;
 
 import java.io.BufferedReader;
@@ -23,7 +23,8 @@ public class ExecuteScript extends Command {
             return;
         }
         try (BufferedReader br = new BufferedReader(new FileReader("config/" + args[1] + ".txt"))) {
-            Map<String, Command> commands = commandManager.getCommands();
+            CommandManager executeCommandManager = new CommandManager(stream, new ScannerHandler(br, stream), commandManager.getUserPermission());
+            Map<String, Command> commands = executeCommandManager.getCommands();
             String nextCommand = br.readLine().trim();
             stream.printScriptLine(nextCommand + "\n");
             while (!nextCommand.equals("exit")) {
@@ -31,8 +32,7 @@ public class ExecuteScript extends Command {
                 try {
                     commands.get(splitCommand[0]).runWithPermission(splitCommand);
                 } catch (Exception e) {
-                    stream.printErr("Команда не распознана. Выполнение скрипта прервано\n");
-                    return;
+                    stream.printErr("Команда не распознана\n");
                 }
                 stream.print("$ ");
                 nextCommand = br.readLine().trim();
@@ -43,7 +43,5 @@ public class ExecuteScript extends Command {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
-
     }
 }
