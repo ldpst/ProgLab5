@@ -12,6 +12,11 @@ import java.io.Console;
 import java.io.PrintStream;
 import java.util.Scanner;
 
+/**
+ * Класс команды add
+ *
+ * @author ldspt
+ */
 public class Add extends Command {
     private final CollectionManager collectionManager;
 

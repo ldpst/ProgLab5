@@ -4,7 +4,7 @@ import ru.itmo.prog.lab5.managers.CommandManager;
 import ru.itmo.prog.lab5.utils.StreamHandler;
 
 /**
- * Класс команды "help"
+ * Класс команды help
  *
  * @author ldpst
  */
@@ -17,7 +17,7 @@ public class Help extends Command {
     public void run(String[] args) {
         stream.printSuccess("Справка по доступным командам:\n");
         for (Command command : commandManager.getCommands().values()) {
-            if (commandManager.getUserPermission() <= command.getPermission()) {
+            if (commandManager.getUserPermission().compareTo(command.getPermission()) <= 0) {
                 stream.printf("> %s : %s\n", command.getName(), command.getDescription());
             }
         }

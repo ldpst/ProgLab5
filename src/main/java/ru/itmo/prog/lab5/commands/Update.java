@@ -7,6 +7,11 @@ import ru.itmo.prog.lab5.object.builders.IDBuilder;
 import ru.itmo.prog.lab5.object.builders.MovieBuilder;
 import ru.itmo.prog.lab5.utils.StreamHandler;
 
+/**
+ * Класс команды update
+ *
+ * @author ldpst
+ */
 public class Update extends Command {
     private final CollectionManager collectionManager;
 

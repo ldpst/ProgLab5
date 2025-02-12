@@ -11,7 +11,7 @@ import java.lang.reflect.Field;
 import java.util.LinkedHashMap;
 
 /**
- * Класс команды Save
+ * Класс команды save
  *
  * @author ldpst
  */

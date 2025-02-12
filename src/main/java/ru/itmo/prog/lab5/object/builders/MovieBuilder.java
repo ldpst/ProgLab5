@@ -90,20 +90,7 @@ public class MovieBuilder extends Builder {
      * @return Найденный жанр
      */
     private MovieGenre readGenre() {
-        stream.print("> Введите жанр " + Arrays.toString(MovieGenre.values()) + ":\n$ ");
-        String res = scanner.nextLine().trim();
-        if (res.isEmpty()) {
-            return null;
-        }
-        MovieGenre genre;
-        try {
-            genre = MovieGenre.checkOf(res);
-        } catch (IllegalArgumentException e) {
-            stream.printErr("Введенный жанр не является одним из предложенных\n");
-            return (MovieGenre) tryAgain(this::readGenre);
-//            throw new InputCantBeNullException();
-        }
-        return genre;
+        return new GenreBuilder(stream, scanner, inputFormat).build();
     }
 
     /**

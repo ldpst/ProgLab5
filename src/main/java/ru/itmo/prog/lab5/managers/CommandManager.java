@@ -1,15 +1,13 @@
 package ru.itmo.prog.lab5.managers;
 
 import ru.itmo.prog.lab5.commands.*;
+import ru.itmo.prog.lab5.utils.Permissions;
+import ru.itmo.prog.lab5.utils.Runner;
 import ru.itmo.prog.lab5.utils.ScannerHandler;
 import ru.itmo.prog.lab5.utils.StreamHandler;
 
-import java.io.Console;
-import java.io.PrintStream;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.Scanner;
 
 /**
  * Класс для управления командами
@@ -20,12 +18,14 @@ public class CommandManager {
     private final Map<String, Command> commands = new LinkedHashMap<>();
     private final CollectionManager collectionManager = new CollectionManager();
     private final ScannerHandler scanner;
-    private final int userPermission;
+    private final Permissions userPermission;
     private int inputFormat = 1;
+    private final Runner runner;
 
-    public CommandManager(StreamHandler stream, ScannerHandler scanner, int userPermission) {
+    public CommandManager(StreamHandler stream, ScannerHandler scanner, Runner runner, Permissions userPermission) {
         this.scanner = scanner;
         this.userPermission = userPermission;
+        this.runner = runner;
         addCommand("help", new Help(stream, this));
         addCommand("info", new Info(stream, this));
         addCommand("show", new Show(stream, this));
@@ -33,15 +33,25 @@ public class CommandManager {
         addCommand("update", new Update(stream, this));
         addCommand("remove_by_id", new RemoveById(stream, this));
         addCommand("clear", new Clear(stream, this));
+        addCommand("exit", new Exit(stream, this));
         addCommand("head", new Head(stream, this));
+        addCommand("tail", new Tail(stream, this));
         addCommand("save", new Save(stream, this));
         addCommand("type", new Type(stream, this));
+        addCommand("get_creation_time", new getCreationTime(stream, this));
         addCommand("size", new Size(stream, this));
+        addCommand("max", new Max(stream, this));
+        addCommand("min", new Min(stream, this));
         addCommand("execute_script", new ExecuteScript(stream, this));
+        addCommand("add_if_max", new AddIfMax(stream, this));
+        addCommand("remove_greater", new RemoveGreater(stream, this));
+        addCommand("max_by_operator", new MaxByOperator(stream, this));
+        addCommand("count_by_operator", new CountByOperator(stream, this));
+        addCommand("count_less_than_genre", new CountLessThanGenre(stream, this));
     }
 
-    public CommandManager(StreamHandler stream, ScannerHandler scanner, int userPermission, int inputFormat) {
-        this(stream, scanner, userPermission);
+    public CommandManager(StreamHandler stream, ScannerHandler scanner, Runner runner, Permissions userPermission, int inputFormat) {
+        this(stream, scanner, runner, userPermission);
         this.inputFormat = inputFormat;
     }
 
@@ -55,11 +65,11 @@ public class CommandManager {
     }
 
     /**
-         * Метод для добавления команды в commands
-         *
-         * @param commandName название команды
-         * @param command     команда
-         */
+     * Метод для добавления команды в commands
+     *
+     * @param commandName название команды
+     * @param command     команда
+     */
     public void addCommand(String commandName, Command command) {
         commands.put(commandName, command);
     }
@@ -93,9 +103,19 @@ public class CommandManager {
 
     /**
      * Метод, возвращающий поле userPermission
+     *
      * @return userPermission
      */
-    public int getUserPermission() {
+    public Permissions getUserPermission() {
         return userPermission;
+    }
+
+    /**
+     * Возвращает поле runner
+     *
+     * @return runner
+     */
+    public Runner getRunner() {
+        return runner;
     }
 }

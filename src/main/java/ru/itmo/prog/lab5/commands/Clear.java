@@ -4,6 +4,11 @@ import ru.itmo.prog.lab5.managers.CollectionManager;
 import ru.itmo.prog.lab5.managers.CommandManager;
 import ru.itmo.prog.lab5.utils.StreamHandler;
 
+/**
+ * Класс команды clear
+ *
+ * @author ldpst
+ */
 public class Clear extends Command {
     private final CollectionManager collectionManager;
 

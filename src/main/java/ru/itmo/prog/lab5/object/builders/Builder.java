@@ -14,7 +14,6 @@ import static java.lang.System.exit;
 public abstract class Builder implements TryAganable {
     protected StreamHandler stream;
     protected ScannerHandler scanner;
-    protected final Lock lock = new ReentrantLock();
     protected int inputFormat = 1; // 1 - через консоль, 2 - через execute_script
 
 

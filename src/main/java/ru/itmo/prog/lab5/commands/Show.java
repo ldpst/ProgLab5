@@ -8,6 +8,11 @@ import ru.itmo.prog.lab5.utils.StreamHandler;
 import java.io.PrintStream;
 import java.util.Deque;
 
+/**
+ * Класс команды show
+ *
+ * @author ldpst
+ */
 public class Show extends Command {
     private final CollectionManager collectionManager;
 

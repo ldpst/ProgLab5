@@ -2,9 +2,7 @@ package ru.itmo.prog.lab5.managers;
 
 import ru.itmo.prog.lab5.object.*;
 
-import java.lang.reflect.Field;
 import java.util.ArrayDeque;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.Deque;
 
@@ -15,11 +13,10 @@ import java.util.Deque;
  */
 public class CollectionManager {
     private Deque<Movie> movies = new ArrayDeque<Movie>();
-    private java.time.ZonedDateTime creationTime;
+    private final java.time.ZonedDateTime creationTime;
 
     public CollectionManager() {
-        movies.add(new Movie("Test1", new Coordinates((float) 12, 10), (long) 1, MovieGenre.DRAMA, MpaaRating.G, new Person("Alex", new Date(), 10, "45674")));
-        movies.add(new Movie("Test1", new Coordinates((float) 12, 10), (long) 1, MovieGenre.DRAMA, MpaaRating.G, new Person("Alex", new Date(), 10, "45674")));
+//        loadFromFile();
         creationTime = java.time.ZonedDateTime.now();
     }
 
@@ -78,22 +75,117 @@ public class CollectionManager {
     }
 
     /**
+     * Возвращает последний элемент в коллекции
+     *
+     * @return первый элемент
+     */
+    public Movie getTail() {
+        if (isEmpty()) {
+            return null;
+        }
+        return movies.getLast();
+    }
+
+    /**
+     * Возвращает максимальный элемент коллекции
+     *
+     * @return максимальный элемент
+     */
+    public Movie getMax() {
+        Movie max = movies.getFirst();
+        for (Movie movie : movies) {
+            if (max.compareTo(movie) < 0) {
+                max = movie;
+            }
+        }
+        return max;
+    }
+
+    /**
+     * Возвращает минимальный элемент коллекции
+     *
+     * @return максимальный элемент
+     */
+    public Movie getMin() {
+        Movie min = movies.getFirst();
+        for (Movie movie : movies) {
+            if (min.compareTo(movie) > 0) {
+                min = movie;
+            }
+        }
+        return min;
+    }
+
+    /**
+     * Возвращает максимальный элемент по полю оператор
+     *
+     * @return максимальный элемент по полю оператор
+     */
+    public Movie getMaxByOperator() {
+        Movie max = movies.getFirst();
+        for (Movie movie : movies) {
+            if (max.getOperator().compareTo(movie.getOperator()) < 0) {
+                max = movie;
+            }
+        }
+        return max;
+    }
+
+    /**
+     * Удалить все элементы превышающие данный и вернуть их количество
+     *
+     * @return количество удаленных элементов
+     */
+    public int removeGreater(Movie greater) {
+        int count = 0;
+        for (Movie movie : movies) {
+            if (greater.compareTo(movie) < 0) {
+                movies.remove(movie);
+                count++;
+            }
+        }
+        return count;
+    }
+
+    /**
+     * Возвращает количество элементов с полем operator равным данному
+     *
+     * @param operator значение для проверки
+     * @return количество
+     */
+    public int countByOperator(Person operator) {
+        int count = 0;
+        for (Movie movie : movies) {
+            if (movie.getOperator().equals(operator)) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    /**
+     * Возвращает количество элементов с полем genre меньшим данного
+     *
+     * @param genre значение для проверки
+     * @return количество
+     */
+    public int countLessTanGenre(MovieGenre genre) {
+        int count = 0;
+        for (Movie movie : movies) {
+            if (movie.getGenre().compareTo(genre) > 0) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    /**
      * Метод, проверяющий пуста ли коллекция
      *
      * @return результат проверки
      */
     public boolean isEmpty() {
         return movies.isEmpty();
-    }
-
-    /**
-     * Метод для удаления элемента по id
-     *
-     * @param id айди
-     */
-    public void removeById(long id) {
-        Movie elem = (Movie) findElemById(id);
-        movies.remove(elem);
     }
 
     /**

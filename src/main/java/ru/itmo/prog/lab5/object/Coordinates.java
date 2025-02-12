@@ -11,7 +11,7 @@ import java.util.Objects;
  *
  * @author ldpst
  */
-public class Coordinates implements Validatable {
+public class Coordinates implements Validatable, Comparable<Coordinates> {
     private Float x; //Поле не может быть null
     private int y; //Значение поля должно быть больше -486
 
@@ -50,6 +50,10 @@ public class Coordinates implements Validatable {
         return this.getClass().getDeclaredFields();
     }
 
+    private double countVectorLength() {
+        return Math.sqrt(Math.pow((double) x, 2.0) * Math.pow((double) y, 2.0));
+    }
+
     @Override
     public boolean isValid() {
         if (x == null) return false;
@@ -72,5 +76,27 @@ public class Coordinates implements Validatable {
     @Override
     public String toString() {
         return "Координата x: " + x + "\nКоордината y: " + y;
+    }
+
+    /**
+     * Метод для сравнения с другим объектом Coordinates
+     *
+     * @param o объект типа Coordinates для сравнения
+     * @return Результат меньше нуля, если other больше данного объекта. Результат равен нулю, если элементы равны. Результат больше нуля, если данный объект больше other
+     */
+    @Override
+    public int compareTo(Coordinates o) {
+        return Double.compare(countVectorLength(), o.countVectorLength());
+    }
+
+    /**
+     * Метод для сравнения двух Coordinates
+     *
+     * @param x объект 1
+     * @param y объект 2
+     * @return Результат меньше нуля, если y больше данного x. Результат равен нулю, если элементы равны. Результат больше нуля, если данный x больше y
+     */
+    public static int compare(Coordinates x, Coordinates y) {
+        return Double.compare(x.countVectorLength(), y.countVectorLength());
     }
 }

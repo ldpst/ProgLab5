@@ -6,6 +6,11 @@ import ru.itmo.prog.lab5.object.Movie;
 import ru.itmo.prog.lab5.object.builders.IDBuilder;
 import ru.itmo.prog.lab5.utils.StreamHandler;
 
+/**
+ * Класс команды remove_by_id
+ *
+ * @author ldpst
+ */
 public class RemoveById extends Command {
     private final CollectionManager collectionManager;
 

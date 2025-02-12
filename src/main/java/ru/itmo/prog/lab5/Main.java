@@ -2,6 +2,8 @@ package ru.itmo.prog.lab5;
 
 import ru.itmo.prog.lab5.commands.Command;
 import ru.itmo.prog.lab5.managers.CommandManager;
+import ru.itmo.prog.lab5.utils.Permissions;
+import ru.itmo.prog.lab5.utils.Runner;
 import ru.itmo.prog.lab5.utils.ScannerHandler;
 import ru.itmo.prog.lab5.utils.StreamHandler;
 
@@ -12,7 +14,7 @@ public class Main {
     public static void main(String[] args) {
         ScannerHandler scanner = new ScannerHandler(new Scanner(System.in));
         StreamHandler stream = new StreamHandler(System.out);
-        CommandManager commandManager = new CommandManager(stream, scanner, 2);
+        CommandManager commandManager = new CommandManager(stream, scanner, new Runner(scanner, stream), Permissions.USER);
         Map<String, Command> commands = commandManager.getCommands();
         stream.print("$ ");
         String nextCommand = scanner.nextLine().trim();

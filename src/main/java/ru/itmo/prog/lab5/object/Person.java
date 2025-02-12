@@ -11,7 +11,7 @@ import java.util.Objects;
  *
  * @author ldpst
  */
-public class Person implements Validatable {
+public class Person implements Validatable, Comparable<Person> {
     private String name; //Поле не может быть null, Строка не может быть пустой
     private java.util.Date birthday; //Поле может быть null
     private long weight; //Значение поля должно быть больше 0
@@ -86,7 +86,7 @@ public class Person implements Validatable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Person person = (Person) o;
-        return  (Objects.equals(name, person.getName()) &&
+        return (Objects.equals(name, person.getName()) &&
                 Objects.equals(birthday, person.getBirthday()) &&
                 Objects.equals(weight, person.getWeight()) &&
                 Objects.equals(passportID, person.getPassportID()));
@@ -100,5 +100,27 @@ public class Person implements Validatable {
     @Override
     public String toString() {
         return "Имя: " + this.name + "\nДень рождения: " + this.birthday.toString() + "\nВес: " + this.weight + "\nАйди паспорта: " + this.passportID;
+    }
+
+    /**
+     * Метод для сравнения с другим объектом Person
+     *
+     * @param o объект типа Person для сравнения
+     * @return Результат меньше нуля, если other больше данного объекта. Результат равен нулю, если элементы равны. Результат больше нуля, если данный объект больше other
+     */
+    @Override
+    public int compareTo(Person o) {
+        return birthday.compareTo(o.getBirthday());
+    }
+
+    /**
+     * Метод для сравнения двух Person
+     *
+     * @param x объект 1
+     * @param y объект 2
+     * @return Результат меньше нуля, если y больше данного x. Результат равен нулю, если элементы равны. Результат больше нуля, если данный x больше y
+     */
+    public int compare(Person x, Person y) {
+        return Long.compare(x.getBirthday().getTime(), y.getBirthday().getTime());
     }
 }

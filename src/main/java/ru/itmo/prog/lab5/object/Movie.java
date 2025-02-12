@@ -12,7 +12,8 @@ import java.util.Objects;
  *
  * @author ldpst
  */
-public class Movie extends Element {
+public class Movie extends Element
+        implements Comparable<Movie> {
     static long nextId = 1;
 
     private long id; //Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
@@ -54,14 +55,25 @@ public class Movie extends Element {
     }
 
     /**
-     * Метод для сравнения с другим объектом Element
+     * Метод для сравнения с другим объектом Movie
      *
-     * @param other объект типа Element для сравнения
+     * @param other объект типа Movie для сравнения
      * @return Результат меньше нуля, если other больше данного объекта. Результат равен нулю, если элементы равны. Результат больше нуля, если данный объект больше other
      */
     @Override
-    public int compareTo(Element other) {
-        return Long.compare(getId(), other.getId());
+    public int compareTo(Movie other) {
+        return Coordinates.compare(getCoordinates(), other.getCoordinates());
+    }
+
+    /**
+     * Метод для сравнения двух Movie
+     *
+     * @param x объект 1
+     * @param y объект 2
+     * @return Результат меньше нуля, если y больше данного x. Результат равен нулю, если элементы равны. Результат больше нуля, если данный x больше y
+     */
+    public static int compare(Movie x, Movie y) {
+        return Coordinates.compare(x.getCoordinates(), y.getCoordinates());
     }
 
     /**

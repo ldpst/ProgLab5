@@ -1,6 +1,7 @@
 package ru.itmo.prog.lab5.commands;
 
 import ru.itmo.prog.lab5.managers.CommandManager;
+import ru.itmo.prog.lab5.utils.Runner;
 import ru.itmo.prog.lab5.utils.ScannerHandler;
 import ru.itmo.prog.lab5.utils.StreamHandler;
 
@@ -10,6 +11,11 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Map;
 
+/**
+ * Класс команды execute_script
+ *
+ * @author ldpst
+ */
 public class ExecuteScript extends Command {
 
     public ExecuteScript(StreamHandler stream, CommandManager commandManager) {
@@ -18,12 +24,16 @@ public class ExecuteScript extends Command {
 
     @Override
     public void run(String[] args) {
+
         if (args.length != 2) {
             stream.printErr("Неверный формат команды\n");
             return;
         }
         try (BufferedReader br = new BufferedReader(new FileReader("config/" + args[1] + ".txt"))) {
-            CommandManager executeCommandManager = new CommandManager(stream, new ScannerHandler(br, stream), commandManager.getUserPermission(), 2);
+            Runner runner = new Runner(new ScannerHandler(br, stream), stream);
+
+
+            CommandManager executeCommandManager = new CommandManager(stream, new ScannerHandler(br, stream), commandManager.getRunner(), commandManager.getUserPermission(), 2);
             Map<String, Command> commands = executeCommandManager.getCommands();
             String nextCommand = br.readLine().trim();
             stream.printScriptLine(nextCommand + "\n");

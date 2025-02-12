@@ -4,6 +4,11 @@ import ru.itmo.prog.lab5.managers.CollectionManager;
 import ru.itmo.prog.lab5.managers.CommandManager;
 import ru.itmo.prog.lab5.utils.StreamHandler;
 
+/**
+ * Класс команды head
+ *
+ * @author ldpst
+ */
 public class Head extends Command {
     private final CollectionManager collectionManager;
 
@@ -14,11 +19,11 @@ public class Head extends Command {
 
     @Override
     public void run(String[] args) {
+        stream.printSuccess("Первый элемент коллекции:\n");
         if (collectionManager.isEmpty()) {
-            stream.printSuccess("Коллекция пуста\n");
+            stream.print("Коллекция пуста\n");
             return;
         }
-        stream.printSuccess("Первый элемент коллекции:\n");
         stream.print(collectionManager.getHead().toString() + "\n");
     }
 }
