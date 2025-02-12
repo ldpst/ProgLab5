@@ -25,7 +25,7 @@ public class Update extends Command {
         if (aim == null) {
             stream.printErr("Объекта под данным id не существует\n");
         } else {
-            aim.update(new MovieBuilder(stream, commandManager.getScanner()).build());
+            aim.update(new MovieBuilder(stream, commandManager.getScanner(), commandManager.getInputFormat()).build());
             stream.printSuccess("Замена прошла успешно\n");
         }
     }

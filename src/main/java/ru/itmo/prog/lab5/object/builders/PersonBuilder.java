@@ -1,7 +1,6 @@
 package ru.itmo.prog.lab5.object.builders;
 
 import ru.itmo.prog.lab5.object.Person;
-import ru.itmo.prog.lab5.utils.InputCantBeNullException;
 import ru.itmo.prog.lab5.utils.ScannerHandler;
 import ru.itmo.prog.lab5.utils.StreamHandler;
 
@@ -9,13 +8,18 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Scanner;
 import java.util.function.Supplier;
 
-public class PersonBuild extends Builder {
+import static java.lang.System.exit;
 
-    public PersonBuild(StreamHandler stream, ScannerHandler scanner) {
+public class PersonBuilder extends Builder {
+
+    public PersonBuilder(StreamHandler stream, ScannerHandler scanner) {
         super(stream, scanner);
+    }
+
+    public PersonBuilder(StreamHandler stream, ScannerHandler scanner, int inputFormat) {
+        super(stream, scanner, inputFormat);
     }
 
     @Override
@@ -126,16 +130,5 @@ public class PersonBuild extends Builder {
             return (String) tryAgain(this::readPassportID);
         }
         return passportID;
-    }
-
-    /**
-     * Метод для запроса повторного ввода
-     *
-     * @param action метод, который запустится повторно
-     * @return Объект-результат переданной функции
-     */
-    private Object tryAgain(Supplier<Object> action) {
-        stream.print("* Повторная попытка ввода\n");
-        return action.get();
     }
 }

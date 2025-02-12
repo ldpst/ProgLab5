@@ -5,8 +5,9 @@ import ru.itmo.prog.lab5.utils.ScannerHandler;
 import ru.itmo.prog.lab5.utils.StreamHandler;
 
 import java.util.Arrays;
-import java.util.Scanner;
 import java.util.function.Supplier;
+
+import static java.lang.System.exit;
 
 /**
  * Класс для создания объекта Movie
@@ -16,6 +17,10 @@ import java.util.function.Supplier;
 public class MovieBuilder extends Builder {
     public MovieBuilder(StreamHandler stream, ScannerHandler scanner) {
         super(stream, scanner);
+    }
+
+    public MovieBuilder(StreamHandler stream, ScannerHandler scanner, int inputFormat) {
+        super(stream, scanner, inputFormat);
     }
 
     @Override
@@ -52,7 +57,7 @@ public class MovieBuilder extends Builder {
      */
     private Coordinates readCoordinates() {
         stream.print("* Ввод координат\n");
-        return new CoordinatesBuilder(stream, scanner).build();
+        return new CoordinatesBuilder(stream, scanner, inputFormat).build();
     }
 
     /**
@@ -133,22 +138,11 @@ public class MovieBuilder extends Builder {
         String res = scanner.nextLine().trim().toLowerCase();
         if (res.equals("y")) {
             stream.print("* Ввод оператора\n");
-            return new PersonBuild(stream, scanner).build();
+            return new PersonBuilder(stream, scanner, inputFormat).build();
         }
         if (res.equals("n")) {
             return null;
         }
         return (Person) tryAgain(this::readPerson);
-    }
-
-    /**
-     * Метод для запроса повторного ввода
-     *
-     * @param action метод, который запустится повторно
-     * @return Объект-результат переданной функции
-     */
-    private Object tryAgain(Supplier<Object> action) {
-        stream.print("* Повторная попытка ввода\n");
-        return action.get();
     }
 }

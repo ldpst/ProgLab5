@@ -22,7 +22,7 @@ public class Add extends Command {
 
     @Override
     public void run(String[] args) {
-        Movie movie = new MovieBuilder(stream, commandManager.getScanner()).build();
+        Movie movie = new MovieBuilder(stream, commandManager.getScanner(), commandManager.getInputFormat()).build();
         collectionManager.add(movie);
         stream.printSuccess("Объект успешно добавлен\n");
     }

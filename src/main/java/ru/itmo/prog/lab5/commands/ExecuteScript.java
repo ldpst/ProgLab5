@@ -23,7 +23,7 @@ public class ExecuteScript extends Command {
             return;
         }
         try (BufferedReader br = new BufferedReader(new FileReader("config/" + args[1] + ".txt"))) {
-            CommandManager executeCommandManager = new CommandManager(stream, new ScannerHandler(br, stream), commandManager.getUserPermission());
+            CommandManager executeCommandManager = new CommandManager(stream, new ScannerHandler(br, stream), commandManager.getUserPermission(), 2);
             Map<String, Command> commands = executeCommandManager.getCommands();
             String nextCommand = br.readLine().trim();
             stream.printScriptLine(nextCommand + "\n");
@@ -33,6 +33,7 @@ public class ExecuteScript extends Command {
                     commands.get(splitCommand[0]).runWithPermission(splitCommand);
                 } catch (Exception e) {
                     stream.printErr("Команда не распознана\n");
+                    return;
                 }
                 stream.print("$ ");
                 nextCommand = br.readLine().trim();

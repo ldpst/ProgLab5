@@ -21,6 +21,7 @@ public class CommandManager {
     private final CollectionManager collectionManager = new CollectionManager();
     private final ScannerHandler scanner;
     private final int userPermission;
+    private int inputFormat = 1;
 
     public CommandManager(StreamHandler stream, ScannerHandler scanner, int userPermission) {
         this.scanner = scanner;
@@ -39,12 +40,26 @@ public class CommandManager {
         addCommand("execute_script", new ExecuteScript(stream, this));
     }
 
+    public CommandManager(StreamHandler stream, ScannerHandler scanner, int userPermission, int inputFormat) {
+        this(stream, scanner, userPermission);
+        this.inputFormat = inputFormat;
+    }
+
     /**
-     * Метод для добавления команды в commands
+     * Метод, возвращающий поле inputFormat
      *
-     * @param commandName название команды
-     * @param command     команда
+     * @return inputFormat
      */
+    public int getInputFormat() {
+        return inputFormat;
+    }
+
+    /**
+         * Метод для добавления команды в commands
+         *
+         * @param commandName название команды
+         * @param command     команда
+         */
     public void addCommand(String commandName, Command command) {
         commands.put(commandName, command);
     }

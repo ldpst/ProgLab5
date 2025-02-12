@@ -7,9 +7,15 @@ import ru.itmo.prog.lab5.utils.StreamHandler;
 import java.util.Scanner;
 import java.util.function.Supplier;
 
+import static java.lang.System.exit;
+
 public class CoordinatesBuilder extends Builder {
     public CoordinatesBuilder(StreamHandler stream, ScannerHandler scanner) {
         super(stream, scanner);
+    }
+
+    public CoordinatesBuilder(StreamHandler stream, ScannerHandler scanner, int inputFormat) {
+        super(stream, scanner, inputFormat);
     }
 
     @Override
@@ -55,16 +61,5 @@ public class CoordinatesBuilder extends Builder {
 //            throw new NumberFormatException();
         }
         return y;
-    }
-
-    /**
-     * Метод для запроса повторного ввода
-     *
-     * @param action метод, который запустится повторно
-     * @return Объект-результат переданной функции
-     */
-    private Object tryAgain(Supplier<Object> action) {
-        stream.print("* Повторная попытка ввода\n");
-        return action.get();
     }
 }
