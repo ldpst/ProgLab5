@@ -39,6 +39,20 @@ public class Movie extends Element
         }
     }
 
+    public Movie(Integer id, String name, Coordinates coordinates, String creationDate, Long oscarsCount, MovieGenre genre, MpaaRating mpaaRating, Person operator) {
+        this.id = id;
+        this.name = name;
+        this.coordinates = coordinates;
+        this.creationDate = ZonedDateTime.parse(creationDate);
+        this.oscarsCount = oscarsCount;
+        this.genre = genre;
+        this.mpaaRating = mpaaRating;
+        this.operator = operator;
+        if (!isValid()) {
+            throw new ValidationError("Movie");
+        }
+    }
+
     /**
      * Заполняет поля текущего объекта данными из другого объекта
      *

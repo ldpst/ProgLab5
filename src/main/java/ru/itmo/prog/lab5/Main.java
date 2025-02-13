@@ -17,7 +17,6 @@ public class Main {
         ScannerHandler scanner = new ScannerHandler(new Scanner(System.in));
         StreamHandler stream = new StreamHandler(System.out);
         Runner runner = new Runner(scanner, stream);
-        CSVManager csvManager = new CSVManager(stream);
 //        csvManager.loadFromCSV();
         runner.runInteractiveMode();
     }

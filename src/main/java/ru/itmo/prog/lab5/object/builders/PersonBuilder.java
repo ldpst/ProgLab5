@@ -52,17 +52,22 @@ public class PersonBuilder extends Builder {
         stream.printf("> Введите дату рождения человека (формата %s):\n$ ", format);
         String res = scanner.nextLine().trim();
         printIfFileMode(res);
-        if (res.isEmpty()) {
-            stream.printErr("Дата рождения не должна быть пуста\n");
-            return (Date) tryAgain(this::readBirthday);
-        }
         String[] split = res.split(":");
         if (split.length != 3) {
             stream.printErr("Введенные данные неверного формата\n");
             return (Date) tryAgain(this::readBirthday);
         }
-        if (split[0].length() != 2 || split[1].length() != 2 || split[2].length() != 4) {
-            stream.printErr("Введенные данные неверного формата\n");
+        int day, month, year;
+        try {
+            day = Integer.parseInt(split[0]);
+            month = Integer.parseInt(split[1]);
+            year = Integer.parseInt(split[2]);
+        } catch (NumberFormatException e) {
+            stream.printErr("В дате допустимо использование только цифр и символа \":\"\n");
+            return (Date) tryAgain(this::readBirthday);
+        }
+        if (day < 1 || day > 31 || month < 1 || month > 12 || year < 1) {
+            stream.printErr("Введена невозможная дата\n");
             return (Date) tryAgain(this::readBirthday);
         }
         DateFormat dateFormat = new SimpleDateFormat(format);

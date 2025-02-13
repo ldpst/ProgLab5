@@ -26,7 +26,7 @@ public class CollectionManager {
      * @param movie элемент для добавления
      */
     public void add(Movie movie) {
-        movies.push(movie);
+        movies.addLast(movie);
         Movie.increaseNextId();
     }
 
@@ -124,7 +124,7 @@ public class CollectionManager {
     public Movie getMaxByOperator() {
         Movie max = movies.getFirst();
         for (Movie movie : movies) {
-            if (max.getOperator().compareTo(movie.getOperator()) < 0) {
+            if (max.getOperator() == null || (movie.getOperator() != null && max.getOperator().compareTo(movie.getOperator()) > 0)) {
                 max = movie;
             }
         }

@@ -12,12 +12,12 @@ import java.util.Objects;
  * @author ldpst
  */
 public class Person implements Validatable, Comparable<Person> {
-    private String name; //Поле не может быть null, Строка не может быть пустой
-    private java.util.Date birthday; //Поле может быть null
-    private long weight; //Значение поля должно быть больше 0
-    private String passportID; //Длина строки не должна быть больше 25, Строка не может быть пустой, Поле не может быть null
+    private final String name; //Поле не может быть null, Строка не может быть пустой
+    private final java.util.Date birthday; //Поле может быть null
+    private final Long weight; //Значение поля должно быть больше 0
+    private final String passportID; //Длина строки не должна быть больше 25, Строка не может быть пустой, Поле не может быть null
 
-    public Person(String name, java.util.Date birthday, long weight, String passportID) {
+    public Person(String name, java.util.Date birthday, Long weight, String passportID) {
         this.name = name;
         this.birthday = birthday;
         this.weight = weight;
@@ -30,7 +30,6 @@ public class Person implements Validatable, Comparable<Person> {
     @Override
     public boolean isValid() {
         if (name == null) return false;
-        if (birthday == null) return false;
         if (weight <= 0) return false;
         if (passportID == null || passportID.isEmpty() || passportID.length() > 25) return false;
         return true;
@@ -99,7 +98,17 @@ public class Person implements Validatable, Comparable<Person> {
 
     @Override
     public String toString() {
-        return "Имя: " + this.name + "\nДень рождения: " + this.birthday.toString() + "\nВес: " + this.weight + "\nАйди паспорта: " + this.passportID;
+        return "Имя: " + toNotNullSting(this.name)  + "\nДень рождения: " + toNotNullSting(this.birthday) + "\nВес: " + toNotNullSting(this.weight) + "\nАйди паспорта: " + toNotNullSting(this.passportID);
+
+    }
+
+    /**
+     * Метод возвращающий поле в виде строки
+     * @param object конвертирующийся объект
+     * @return строка
+     */
+    private String toNotNullSting(Object object) {
+        return ((object == null) ? "null" : object.toString());
     }
 
     /**

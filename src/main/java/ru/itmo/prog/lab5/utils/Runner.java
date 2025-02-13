@@ -1,6 +1,7 @@
 package ru.itmo.prog.lab5.utils;
 
 import ru.itmo.prog.lab5.commands.Command;
+import ru.itmo.prog.lab5.managers.CSVManager;
 import ru.itmo.prog.lab5.managers.CommandManager;
 
 import java.util.Map;
@@ -26,6 +27,8 @@ public class Runner {
         commands = commandManager.getCommands();
         if (mainRunner == null) {
             mainRunner = this;
+            CSVManager csvManager = new CSVManager(stream, commandManager);
+            csvManager.loadFromCSV();
         }
     }
 

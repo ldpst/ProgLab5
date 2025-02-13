@@ -16,6 +16,6 @@ public class ValidationError extends RuntimeException {
 
     @Override
     public String getMessage() {
-        return "Непредвиденная ошибка при вводе данных в " + place + ". Какое-то значение не удовлетворяет условиям. ИСКЛЮЧЕНИЕ ДЛЯ ТЕСТИРОВАНИЯ";
+        return "Ошибка при загрузке данных из файла. Объект класса " + place + " введен неверно.";
     }
 }
