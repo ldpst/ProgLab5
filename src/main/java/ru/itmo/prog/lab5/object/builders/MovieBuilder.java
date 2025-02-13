@@ -1,13 +1,11 @@
 package ru.itmo.prog.lab5.object.builders;
 
 import ru.itmo.prog.lab5.object.*;
+import ru.itmo.prog.lab5.utils.InputFormat;
 import ru.itmo.prog.lab5.utils.ScannerHandler;
 import ru.itmo.prog.lab5.utils.StreamHandler;
 
 import java.util.Arrays;
-import java.util.function.Supplier;
-
-import static java.lang.System.exit;
 
 /**
  * Класс для создания объекта Movie
@@ -15,11 +13,7 @@ import static java.lang.System.exit;
  * @author ldpst
  */
 public class MovieBuilder extends Builder {
-    public MovieBuilder(StreamHandler stream, ScannerHandler scanner) {
-        super(stream, scanner);
-    }
-
-    public MovieBuilder(StreamHandler stream, ScannerHandler scanner, int inputFormat) {
+    public MovieBuilder(StreamHandler stream, ScannerHandler scanner, InputFormat inputFormat) {
         super(stream, scanner, inputFormat);
     }
 
@@ -42,6 +36,7 @@ public class MovieBuilder extends Builder {
     private String readName() {
         stream.print("> Введите название фильма:\n$ ");
         String name = scanner.nextLine().trim();
+        printIfFileMode(name);
         if (name.isEmpty()) {
             stream.printErr("Название не должно быть пустым\n");
             return (String) tryAgain(this::readName);
@@ -68,18 +63,17 @@ public class MovieBuilder extends Builder {
     private Long readOscarCount() {
         stream.print("> Введите количество оскаров:\n$ ");
         String res = scanner.nextLine().trim();
+        printIfFileMode(res);
         long count;
         try {
             count = Long.parseLong(res);
         } catch (NumberFormatException e) {
             stream.printErr("Количество оскаров должно быть целым числом\n");
             return (Long) tryAgain(this::readOscarCount);
-//            throw new NumberFormatException();
         }
         if (count <= 0) {
             stream.printErr("Количество оскаров должно быть больше нуля\n");
             return (Long) tryAgain(this::readOscarCount);
-//            throw new NumberFormatException();
         }
         return count;
     }
@@ -101,6 +95,7 @@ public class MovieBuilder extends Builder {
     private MpaaRating readMpaaRating() {
         stream.print("> Введите Мпаа Рейтинг " + Arrays.toString(MpaaRating.values()) + ":\n$ ");
         String res = scanner.nextLine().trim();
+        printIfFileMode(res);
         if (res.isEmpty()) {
             return null;
         }
@@ -110,7 +105,6 @@ public class MovieBuilder extends Builder {
         } catch (IllegalArgumentException e) {
             stream.printErr("Введенный Мпаа рейтинг не является одним из предложенных\n");
             return (MpaaRating) tryAgain(this::readMpaaRating);
-//            throw new InputCantBeNullException();
         }
         return rating;
     }
@@ -123,6 +117,7 @@ public class MovieBuilder extends Builder {
     private Person readPerson() {
         stream.print("> Оператор != null? y/n ");
         String res = scanner.nextLine().trim().toLowerCase();
+        printIfFileMode(res);
         if (res.equals("y")) {
             stream.print("* Ввод оператора\n");
             return new PersonBuilder(stream, scanner, inputFormat).build();

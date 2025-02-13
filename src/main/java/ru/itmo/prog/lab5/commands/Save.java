@@ -33,7 +33,8 @@ public class Save extends Command {
             stream.printErr("Переменная окружения с названием файла Lab5FileName пуста\n");
             return;
         }
-        try (FileOutputStream fos = new FileOutputStream("config/" + filePath + ".csv")) {
+        filePath = "config/" + filePath + ".csv";
+        try (FileOutputStream fos = new FileOutputStream(filePath)) {
             fos.write((header + "\n").getBytes());
             for (Movie movie : collectionManager.getMovies()) {
                 String csvLine = makeCsvLineFromObject(movie, fieldNames);
@@ -42,7 +43,7 @@ public class Save extends Command {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        stream.printSuccess("Коллекция успешно сохранена в файл " + filePath + ".csv\n");
+        stream.printSuccess("Коллекция успешно сохранена в файл " + filePath + "\n");
     }
 
     /**
@@ -77,13 +78,20 @@ public class Save extends Command {
      * @param prefix Строка для создания полного имени поля
      * @return Словарь формата [полное имя поля, содержимое]
      */
-    private LinkedHashMap<String, Object> loadFieldsFromObject(Object object, LinkedHashMap<String, Object> res, String prefix) {
+    public LinkedHashMap<String, Object> loadFieldsFromObject(Object object, LinkedHashMap<String, Object> res, String prefix) {
+        if (object == null) {
+            return res;
+        }
+
         Class<?> clazz = object.getClass();
         Field[] fields = clazz.getDeclaredFields();
         for (Field field : fields) {
             field.setAccessible(true);
             try {
                 Object value = field.get(object);
+                if (value == null) {
+                    continue;
+                }
                 String fieldName = prefix + field.getName();
                 if (!field.getType().isPrimitive() && !field.getType().getName().startsWith("java.") && !field.getType().isEnum()) {
                     loadFieldsFromObject(value, res, fieldName + ".");

@@ -1,6 +1,7 @@
 package ru.itmo.prog.lab5.object.builders;
 
 import ru.itmo.prog.lab5.object.Coordinates;
+import ru.itmo.prog.lab5.utils.InputFormat;
 import ru.itmo.prog.lab5.utils.ScannerHandler;
 import ru.itmo.prog.lab5.utils.StreamHandler;
 
@@ -10,11 +11,7 @@ import java.util.function.Supplier;
 import static java.lang.System.exit;
 
 public class CoordinatesBuilder extends Builder {
-    public CoordinatesBuilder(StreamHandler stream, ScannerHandler scanner) {
-        super(stream, scanner);
-    }
-
-    public CoordinatesBuilder(StreamHandler stream, ScannerHandler scanner, int inputFormat) {
+    public CoordinatesBuilder(StreamHandler stream, ScannerHandler scanner, InputFormat inputFormat) {
         super(stream, scanner, inputFormat);
     }
 
@@ -33,6 +30,7 @@ public class CoordinatesBuilder extends Builder {
     private Float readX() {
         stream.print("> Введите координату x:\n$ ");
         String res = scanner.nextLine().trim();
+        printIfFileMode(res);
         float x;
         try {
             x = Float.parseFloat(res);
@@ -52,6 +50,7 @@ public class CoordinatesBuilder extends Builder {
     private int readY() {
         stream.print("> Введите координату y:\n$ ");
         String res = scanner.nextLine().trim();
+        printIfFileMode(res);
         int y;
         try {
             y = Integer.parseInt(res);

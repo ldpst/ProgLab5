@@ -1,17 +1,14 @@
 package ru.itmo.prog.lab5.object.builders;
 
 import ru.itmo.prog.lab5.object.MovieGenre;
+import ru.itmo.prog.lab5.utils.InputFormat;
 import ru.itmo.prog.lab5.utils.ScannerHandler;
 import ru.itmo.prog.lab5.utils.StreamHandler;
 
 import java.util.Arrays;
 
 public class GenreBuilder extends Builder {
-    public GenreBuilder(StreamHandler stream, ScannerHandler scanner) {
-        super(stream, scanner);
-    }
-
-    public GenreBuilder(StreamHandler stream, ScannerHandler scanner, int inputFormat) {
+    public GenreBuilder(StreamHandler stream, ScannerHandler scanner, InputFormat inputFormat) {
         super(stream, scanner, inputFormat);
     }
 
@@ -28,6 +25,7 @@ public class GenreBuilder extends Builder {
     private MovieGenre readGenre() {
         stream.print("> Введите жанр " + Arrays.toString(MovieGenre.values()) + ":\n$ ");
         String res = scanner.nextLine().trim();
+        printIfFileMode(res);
         if (res.isEmpty()) {
             return null;
         }

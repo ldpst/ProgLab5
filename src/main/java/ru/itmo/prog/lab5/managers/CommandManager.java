@@ -1,10 +1,7 @@
 package ru.itmo.prog.lab5.managers;
 
 import ru.itmo.prog.lab5.commands.*;
-import ru.itmo.prog.lab5.utils.Permissions;
-import ru.itmo.prog.lab5.utils.Runner;
-import ru.itmo.prog.lab5.utils.ScannerHandler;
-import ru.itmo.prog.lab5.utils.StreamHandler;
+import ru.itmo.prog.lab5.utils.*;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -17,10 +14,10 @@ import java.util.Map;
 public class CommandManager {
     private final Map<String, Command> commands = new LinkedHashMap<>();
     private final CollectionManager collectionManager = new CollectionManager();
-    private final ScannerHandler scanner;
+    private ScannerHandler scanner;
     private final Permissions userPermission;
-    private int inputFormat = 1;
-    private final Runner runner;
+    private InputFormat inputFormat;
+    private Runner runner;
 
     public CommandManager(StreamHandler stream, ScannerHandler scanner, Runner runner, Permissions userPermission) {
         this.scanner = scanner;
@@ -50,7 +47,7 @@ public class CommandManager {
         addCommand("count_less_than_genre", new CountLessThanGenre(stream, this));
     }
 
-    public CommandManager(StreamHandler stream, ScannerHandler scanner, Runner runner, Permissions userPermission, int inputFormat) {
+    public CommandManager(StreamHandler stream, ScannerHandler scanner, Runner runner, Permissions userPermission, InputFormat inputFormat) {
         this(stream, scanner, runner, userPermission);
         this.inputFormat = inputFormat;
     }
@@ -60,7 +57,7 @@ public class CommandManager {
      *
      * @return inputFormat
      */
-    public int getInputFormat() {
+    public InputFormat getInputFormat() {
         return inputFormat;
     }
 
@@ -117,5 +114,32 @@ public class CommandManager {
      */
     public Runner getRunner() {
         return runner;
+    }
+
+    /**
+     * Устанавливает значение scanner
+     *
+     * @param scanner новое значение
+     */
+    public void setScanner(ScannerHandler scanner) {
+        this.scanner = scanner;
+    }
+
+    /**
+     * Устанавливает значение inputFormat
+     *
+     * @param inputFormat новое значение
+     */
+    public void setInputFormat(InputFormat inputFormat) {
+        this.inputFormat = inputFormat;
+    }
+
+    /**
+     * Устанавливает значение runner
+     *
+     * @param runner новое значение
+     */
+    public void setRunner(Runner runner) {
+        this.runner = runner;
     }
 }

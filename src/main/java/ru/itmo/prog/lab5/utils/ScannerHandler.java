@@ -4,38 +4,53 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.Scanner;
 
+/**
+ * Класс для единообразного использования Scanner и BufferReader
+ *
+ * @author ldpst
+ */
 public class ScannerHandler {
     private final Scanner scanner;
     private final BufferedReader reader;
-    private final StreamHandler stream;
+    private final InputFormat inputFormat;
 
     public ScannerHandler(Scanner scanner) {
         this.scanner = scanner;
+        inputFormat = InputFormat.CONSOLE;
         this.reader = null;
-        stream = null;
     }
 
-    public ScannerHandler(BufferedReader reader, StreamHandler stream) {
+    public ScannerHandler(BufferedReader reader) {
         this.reader = reader;
+        inputFormat = InputFormat.FILE;
         this.scanner = null;
-        this.stream = stream;
     }
 
+    /**
+     * Метод для считывания новой строки
+     *
+     * @return считанная строка
+     */
     public String nextLine() {
         if (scanner != null) {
             return scanner.nextLine();
         }
         if (reader != null) {
             try {
-                String line = reader.readLine();
-                if (stream != null) {
-                    stream.printScriptLine(line + "\n");
-                }
-                return line;
+                return reader.readLine();
             } catch (IOException e) {
                 return null;
             }
         }
         return null;
+    }
+
+    /**
+     * Возвращает формат ввода
+     *
+     * @return формат ввода
+     */
+    public InputFormat getInputFormat() {
+        return inputFormat;
     }
 }

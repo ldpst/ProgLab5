@@ -9,7 +9,6 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.Map;
 
 /**
  * Класс команды execute_script
@@ -30,25 +29,8 @@ public class ExecuteScript extends Command {
             return;
         }
         try (BufferedReader br = new BufferedReader(new FileReader("config/" + args[1] + ".txt"))) {
-            Runner runner = new Runner(new ScannerHandler(br, stream), stream);
-
-
-            CommandManager executeCommandManager = new CommandManager(stream, new ScannerHandler(br, stream), commandManager.getRunner(), commandManager.getUserPermission(), 2);
-            Map<String, Command> commands = executeCommandManager.getCommands();
-            String nextCommand = br.readLine().trim();
-            stream.printScriptLine(nextCommand + "\n");
-            while (!nextCommand.equals("exit")) {
-                String[] splitCommand = nextCommand.split(" ");
-                try {
-                    commands.get(splitCommand[0]).runWithPermission(splitCommand);
-                } catch (Exception e) {
-                    stream.printErr("Команда не распознана\n");
-                    return;
-                }
-                stream.print("$ ");
-                nextCommand = br.readLine().trim();
-                stream.printScriptLine(nextCommand + "\n");
-            }
+            stream.printSuccess("Выполнение скрипта:\n");
+            new Runner(new ScannerHandler(br), stream, commandManager).runScriptMode();
         } catch (FileNotFoundException e) {
             stream.printErr("Файл со скриптом не найден\n");
         } catch (IOException e) {

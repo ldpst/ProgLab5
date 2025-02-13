@@ -1,5 +1,6 @@
 package ru.itmo.prog.lab5.object.builders;
 
+import ru.itmo.prog.lab5.utils.InputFormat;
 import ru.itmo.prog.lab5.utils.ScannerHandler;
 import ru.itmo.prog.lab5.utils.StreamHandler;
 import ru.itmo.prog.lab5.utils.TryAganable;
@@ -14,15 +15,9 @@ import static java.lang.System.exit;
 public abstract class Builder implements TryAganable {
     protected StreamHandler stream;
     protected ScannerHandler scanner;
-    protected int inputFormat = 1; // 1 - через консоль, 2 - через execute_script
+    protected InputFormat inputFormat;
 
-
-    public Builder(StreamHandler stream, ScannerHandler scanner) {
-        this.stream = stream;
-        this.scanner = scanner;
-    }
-
-    public Builder(StreamHandler stream, ScannerHandler scanner, int inputFormat) {
+    public Builder(StreamHandler stream, ScannerHandler scanner, InputFormat inputFormat) {
         this.stream = stream;
         this.scanner = scanner;
         this.inputFormat = inputFormat;
@@ -43,10 +38,21 @@ public abstract class Builder implements TryAganable {
      * @return Объект-результат переданной функции
      */
     public Object tryAgain(Supplier<Object> action) {
-        if (inputFormat == 2) {
+        if (inputFormat.equals(InputFormat.FILE)) {
             exit(0);
         }
         stream.print("* Повторная попытка ввода\n");
         return action.get();
+    }
+
+    /**
+     * Метод для вывода сообщения при вводе из файла
+     *
+     * @param msg сообщение
+     */
+    protected void printIfFileMode(String msg) {
+        if (inputFormat == InputFormat.FILE) {
+            stream.printScriptLine(msg + "\n");
+        }
     }
 }

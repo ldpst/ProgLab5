@@ -21,7 +21,7 @@ public class RemoveById extends Command {
 
     @Override
     public void run(String[] args) {
-        Long aimId = new IDBuilder(stream, commandManager.getScanner(), args).build();
+        Long aimId = new IDBuilder(stream, commandManager.getScanner(), args, commandManager.getInputFormat()).build();
         if (aimId == null) {
             return;
         }

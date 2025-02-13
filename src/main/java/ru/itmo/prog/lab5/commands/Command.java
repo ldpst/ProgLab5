@@ -31,6 +31,7 @@ public abstract class Command implements Runable {
 
     /**
      * Метод для запуска команды с правами доступа
+     *
      * @param args данные команды
      */
     public void runWithPermission(String[] args) {

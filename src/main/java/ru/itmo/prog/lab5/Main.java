@@ -1,6 +1,8 @@
 package ru.itmo.prog.lab5;
 
+import org.checkerframework.checker.units.qual.C;
 import ru.itmo.prog.lab5.commands.Command;
+import ru.itmo.prog.lab5.managers.CSVManager;
 import ru.itmo.prog.lab5.managers.CommandManager;
 import ru.itmo.prog.lab5.utils.Permissions;
 import ru.itmo.prog.lab5.utils.Runner;
@@ -14,19 +16,9 @@ public class Main {
     public static void main(String[] args) {
         ScannerHandler scanner = new ScannerHandler(new Scanner(System.in));
         StreamHandler stream = new StreamHandler(System.out);
-        CommandManager commandManager = new CommandManager(stream, scanner, new Runner(scanner, stream), Permissions.USER);
-        Map<String, Command> commands = commandManager.getCommands();
-        stream.print("$ ");
-        String nextCommand = scanner.nextLine().trim();
-        while (!nextCommand.equals("exit")) {
-            String[] splitCommand = nextCommand.split(" ");
-            try {
-                commands.get(splitCommand[0]).runWithPermission(splitCommand);
-            } catch (Exception e) {
-                stream.printErr("Команда не распознана\n");
-            }
-            stream.print("$ ");
-            nextCommand = scanner.nextLine().trim();
-        }
+        Runner runner = new Runner(scanner, stream);
+        CSVManager csvManager = new CSVManager(stream);
+//        csvManager.loadFromCSV();
+        runner.runInteractiveMode();
     }
 }

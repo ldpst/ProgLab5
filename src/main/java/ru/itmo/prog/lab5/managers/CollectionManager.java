@@ -156,7 +156,7 @@ public class CollectionManager {
     public int countByOperator(Person operator) {
         int count = 0;
         for (Movie movie : movies) {
-            if (movie.getOperator().equals(operator)) {
+            if (movie.getOperator() != null && movie.getOperator().equals(operator)) {
                 count++;
             }
         }
