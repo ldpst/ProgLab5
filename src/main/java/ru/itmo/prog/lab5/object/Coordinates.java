@@ -3,18 +3,16 @@ package ru.itmo.prog.lab5.object;
 import ru.itmo.prog.lab5.utils.Validatable;
 import ru.itmo.prog.lab5.utils.ValidationError;
 
-import java.lang.reflect.Field;
 import java.util.Objects;
 
 /**
  * Класс координат
  *
+ * @param x Поле не может быть null
+ * @param y Значение поля должно быть больше -486
  * @author ldpst
  */
-public class Coordinates implements Validatable, Comparable<Coordinates> {
-    private Float x; //Поле не может быть null
-    private int y; //Значение поля должно быть больше -486
-
+public record Coordinates(Float x, int y) implements Validatable, Comparable<Coordinates> {
     public Coordinates(Float x, int y) {
         this.x = x;
         this.y = y;
@@ -28,7 +26,8 @@ public class Coordinates implements Validatable, Comparable<Coordinates> {
      *
      * @return x
      */
-    public Float getX() {
+    @Override
+    public Float x() {
         return x;
     }
 
@@ -37,21 +36,13 @@ public class Coordinates implements Validatable, Comparable<Coordinates> {
      *
      * @return y
      */
-    public int getY() {
+    @Override
+    public int y() {
         return y;
     }
 
-    /**
-     * Метод, возвращающий поля класса
-     *
-     * @return массив полей класса
-     */
-    public Field[] getField() {
-        return this.getClass().getDeclaredFields();
-    }
-
     private double countVectorLength() {
-        return Math.sqrt(Math.pow((double) x, 2.0) * Math.pow((double) y, 2.0));
+        return Math.sqrt(Math.pow((double) x, 2.0) * Math.pow(y, 2.0));
     }
 
     @Override
@@ -65,12 +56,7 @@ public class Coordinates implements Validatable, Comparable<Coordinates> {
         if (this == obj) return true;
         if (obj == null || obj.getClass() != getClass()) return false;
         Coordinates coordinates = (Coordinates) obj;
-        return (Objects.equals(x, coordinates.getX()) && Objects.equals(y, coordinates.getY()));
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(x, y);
+        return (Objects.equals(x, coordinates.x()) && Objects.equals(y, coordinates.y()));
     }
 
     @Override

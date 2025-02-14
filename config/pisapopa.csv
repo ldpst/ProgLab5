@@ -1,0 +1,2 @@
+nextId,id,name,coordinates.x,coordinates.y,creationDate,oscarsCount,genre,mpaaRating,operator.name,operator.birthday,operator.weight,operator.passportID
+2,1,Test,1.0,2,2025-02-14T04:24:36.138201300+03:00[Europe/Moscow],3,MUSICAL,PG_13,alex,Sun Dec 12 00:00:00 MSK 2004,12,12121212

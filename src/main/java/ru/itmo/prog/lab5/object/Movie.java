@@ -3,7 +3,6 @@ package ru.itmo.prog.lab5.object;
 import ru.itmo.prog.lab5.utils.Element;
 import ru.itmo.prog.lab5.utils.ValidationError;
 
-import java.lang.reflect.Field;
 import java.time.ZonedDateTime;
 import java.util.Objects;
 
@@ -16,7 +15,7 @@ public class Movie extends Element
         implements Comparable<Movie> {
     static long nextId = 1;
 
-    private long id; //Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
+    private final long id; //Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
     private String name; //Поле не может быть null, Строка не может быть пустой
     private Coordinates coordinates; //Поле не может быть null
     private java.time.ZonedDateTime creationDate; //Поле не может быть null, Значение этого поля должно генерироваться автоматически
@@ -101,16 +100,6 @@ public class Movie extends Element
     }
 
     /**
-     * Метод, присваивающий значение полю id
-     *
-     * @param id новое id
-     */
-    @Override
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    /**
      * Метод проверки валидности полей класса
      *
      * @return результат проверки
@@ -121,8 +110,7 @@ public class Movie extends Element
         if (this.name == null || this.name.isEmpty()) return false;
         if (this.coordinates == null) return false;
         if (this.creationDate == null) return false;
-        if (this.oscarsCount <= 0 || this.oscarsCount == null) return false;
-        return true;
+        return this.oscarsCount > 0;
     }
 
     /**
@@ -200,17 +188,8 @@ public class Movie extends Element
      *
      * @param newId новое значение
      */
-    public static void setNextId(int newId) {
+    public static void setNextId(long newId) {
         nextId = newId;
-    }
-
-    /**
-     * Метод, возвращающий поля класса
-     *
-     * @return массив полей класса
-     */
-    public Field[] getField() {
-        return this.getClass().getDeclaredFields();
     }
 
     @Override
@@ -240,8 +219,8 @@ public class Movie extends Element
                 "> Координаты:\n" + this.coordinates.toString() + "\n" +
                 "> Дата создания: " + this.creationDate.toString() + "\n" +
                 "> Количество оскаров: " + this.oscarsCount.toString() + "\n" +
-                "> Жанр: " + ((this.genre != null) ? (this.genre.toString() + "\n") : "null\n") +
-                "> Мпаа Рейтинг: " + ((this.mpaaRating != null) ? (this.mpaaRating.toString() + "\n") : "null\n") +
-                "> Оператор: " + ((this.operator != null) ? ("\n" + this.operator.toString()) : "null");
+                "> Жанр: " + ((this.genre != null) ? (this.genre + "\n") : "null\n") +
+                "> Мпаа Рейтинг: " + ((this.mpaaRating != null) ? (this.mpaaRating + "\n") : "null\n") +
+                "> Оператор: " + ((this.operator != null) ? ("\n" + this.operator) : "null");
     }
 }

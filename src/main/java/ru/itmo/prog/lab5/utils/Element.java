@@ -6,6 +6,4 @@ package ru.itmo.prog.lab5.utils;
  */
 public abstract class Element implements Validatable {
     public abstract long getId();
-
-    public abstract void setId(long id);
 }

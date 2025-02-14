@@ -4,8 +4,8 @@ import ru.itmo.prog.lab5.commands.Command;
 import ru.itmo.prog.lab5.managers.CSVManager;
 import ru.itmo.prog.lab5.managers.CommandManager;
 
+import java.util.ArrayList;
 import java.util.Map;
-import java.util.NoSuchElementException;
 
 public class Runner {
     private final ScannerHandler scanner;
@@ -19,6 +19,8 @@ public class Runner {
     private InputFormat oldInputFormat;
 
     private RunMode runMode = RunMode.RUN;
+
+    public static ArrayList<String> usedScripts = new ArrayList<>();
 
     public Runner(ScannerHandler scanner, StreamHandler stream) {
         this.scanner = scanner;
@@ -93,6 +95,9 @@ public class Runner {
             } catch (Exception e) {
                 stream.printErr("Команда не распознана\n");
                 setRunMode(RunMode.ERROR);
+            }
+            if (runMode == RunMode.ERROR) {
+                oldRunner.setRunMode(RunMode.ERROR);
                 mainRunner.setRunMode(RunMode.ERROR);
                 return;
             }

@@ -1,9 +1,10 @@
 package ru.itmo.prog.lab5.managers;
 
-import ru.itmo.prog.lab5.object.*;
+import ru.itmo.prog.lab5.object.Movie;
+import ru.itmo.prog.lab5.object.MovieGenre;
+import ru.itmo.prog.lab5.object.Person;
 
 import java.util.ArrayDeque;
-import java.util.Date;
 import java.util.Deque;
 
 /**
@@ -12,7 +13,7 @@ import java.util.Deque;
  * @author ldpst
  */
 public class CollectionManager {
-    private Deque<Movie> movies = new ArrayDeque<Movie>();
+    private Deque<Movie> movies = new ArrayDeque<>();
     private final java.time.ZonedDateTime creationTime;
 
     public CollectionManager() {
@@ -43,7 +44,7 @@ public class CollectionManager {
      * Метод для очищения коллекции
      */
     public void clear() {
-        movies = new ArrayDeque<Movie>();
+        movies = new ArrayDeque<>();
         Movie.setNextId(1);
     }
 
@@ -156,7 +157,7 @@ public class CollectionManager {
     public int countByOperator(Person operator) {
         int count = 0;
         for (Movie movie : movies) {
-            if (movie.getOperator() != null && movie.getOperator().equals(operator)) {
+            if (movie.getOperator() != null && movie.getOperator().equals(operator) || operator == null && movie.getOperator() == null) {
                 count++;
             }
         }
@@ -172,7 +173,7 @@ public class CollectionManager {
     public int countLessTanGenre(MovieGenre genre) {
         int count = 0;
         for (Movie movie : movies) {
-            if (movie.getGenre().compareTo(genre) > 0) {
+            if (movie.getGenre() != null && genre != null && movie.getGenre().compareTo(genre) > 0 || movie.getGenre() == null && genre == null) {
                 count++;
             }
         }
@@ -204,15 +205,6 @@ public class CollectionManager {
      */
     public int getSize() {
         return movies.size();
-    }
-
-    /**
-     * Метод, возвращающий тип коллекции
-     *
-     * @return Class[?]
-     */
-    public Class<?> getCollectionClass() {
-        return movies.getClass();
     }
 
     /**

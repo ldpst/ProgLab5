@@ -3,7 +3,6 @@ package ru.itmo.prog.lab5.object;
 import ru.itmo.prog.lab5.utils.Validatable;
 import ru.itmo.prog.lab5.utils.ValidationError;
 
-import java.lang.reflect.Field;
 import java.util.Objects;
 
 /**
@@ -31,8 +30,7 @@ public class Person implements Validatable, Comparable<Person> {
     public boolean isValid() {
         if (name == null) return false;
         if (weight <= 0) return false;
-        if (passportID == null || passportID.isEmpty() || passportID.length() > 25) return false;
-        return true;
+        return passportID != null && !passportID.isEmpty() && passportID.length() <= 25;
     }
 
     /**
@@ -69,15 +67,6 @@ public class Person implements Validatable, Comparable<Person> {
      */
     public String getPassportID() {
         return passportID;
-    }
-
-    /**
-     * Метод, возвращающий поля класса
-     *
-     * @return массив полей класса
-     */
-    public Field[] getField() {
-        return this.getClass().getDeclaredFields();
     }
 
     @Override

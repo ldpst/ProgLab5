@@ -3,16 +3,13 @@ package ru.itmo.prog.lab5.object.builders;
 import ru.itmo.prog.lab5.utils.InputFormat;
 import ru.itmo.prog.lab5.utils.ScannerHandler;
 import ru.itmo.prog.lab5.utils.StreamHandler;
-import ru.itmo.prog.lab5.utils.TryAganable;
+import ru.itmo.prog.lab5.utils.TryAgainable;
 
-import java.util.Scanner;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
 import java.util.function.Supplier;
 
 import static java.lang.System.exit;
 
-public abstract class Builder implements TryAganable {
+public abstract class Builder implements TryAgainable {
     protected StreamHandler stream;
     protected ScannerHandler scanner;
     protected InputFormat inputFormat;

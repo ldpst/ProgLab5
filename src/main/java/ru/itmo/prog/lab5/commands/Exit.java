@@ -4,8 +4,6 @@ import ru.itmo.prog.lab5.managers.CommandManager;
 import ru.itmo.prog.lab5.utils.RunMode;
 import ru.itmo.prog.lab5.utils.StreamHandler;
 
-import static java.lang.System.exit;
-
 public class Exit extends Command {
 
     public Exit(StreamHandler stream, CommandManager commandManager) {

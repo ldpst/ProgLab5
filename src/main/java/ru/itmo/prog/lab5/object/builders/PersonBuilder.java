@@ -52,6 +52,9 @@ public class PersonBuilder extends Builder {
         stream.printf("> Введите дату рождения человека (формата %s):\n$ ", format);
         String res = scanner.nextLine().trim();
         printIfFileMode(res);
+        if (res.isEmpty()) {
+            return null;
+        }
         String[] split = res.split(":");
         if (split.length != 3) {
             stream.printErr("Введенные данные неверного формата\n");

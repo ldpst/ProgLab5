@@ -8,7 +8,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayDeque;
 import java.util.Date;
 import java.util.Locale;
 
@@ -19,28 +18,26 @@ import java.util.Locale;
  */
 public class CSVManager {
     private final StreamHandler stream;
-    private final CommandManager commandManager;
     private final CollectionManager collectionManager;
 
     private String[] header;
 
     public CSVManager(StreamHandler stream, CommandManager commandManager) {
         this.stream = stream;
-        this.commandManager = commandManager;
         this.collectionManager = commandManager.getCollectionManager();
     }
 
-    public ArrayDeque<Movie> loadFromCSV() {
+    public void loadFromCSV() {
         String fileName = loadFileNameFromEnvironment();
         if (fileName == null) {
-            return null;
+            return;
         }
-        ArrayDeque<Movie> movies = new ArrayDeque<>();
+        long maxId = 0;
         try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
             String line = br.readLine();
             if (line == null) {
                 stream.printErr("В файле отсутствует строка-заголовок\n");
-                return null;
+                return;
             }
             this.header = line.split(",");
             int id = find("id"),
@@ -82,16 +79,15 @@ public class CSVManager {
                                         movieLine[operatorPassportID]
                                 )));
                 collectionManager.add(movie);
+                maxId = Long.max(maxId, movie.getId());
                 line = br.readLine();
             }
 
         } catch (IOException e) {
             stream.printErr("Файл с названием " + fileName + " не найден");
-            return null;
+            return;
         }
-
-
-        return movies;
+        Movie.setNextId(maxId + 1);
     }
 
     /**
@@ -109,6 +105,12 @@ public class CSVManager {
         return "config/" + filePath + ".csv";
     }
 
+    /**
+     * Метод для поиска поля в строке с полями
+     *
+     * @param head искомое поле
+     * @return позиция в строке с полями
+     */
     private int find(String head) {
         for (int i = 0; i < header.length; i++) {
             if (header[i].equals(head)) {

@@ -54,7 +54,7 @@ public class Save extends Command {
      * @return строка в формате csv
      */
     private String makeCsvLineFromObject(Object object, String[] fieldNames) {
-        LinkedHashMap<String, Object> fieldValues = loadFieldsFromObject(object, new LinkedHashMap<String, Object>(), "");
+        LinkedHashMap<String, Object> fieldValues = loadFieldsFromObject(object, new LinkedHashMap<>(), "");
         StringBuilder res = new StringBuilder();
         for (String fieldName : fieldNames) {
             Object value = fieldValues.get(fieldName);
@@ -99,7 +99,7 @@ public class Save extends Command {
                     res.put(fieldName, value);
                 }
             } catch (IllegalAccessException e) {
-                continue;
+                //
             }
         }
         return res;
@@ -125,7 +125,7 @@ public class Save extends Command {
                     res.append(prefix).append(field.getName()).append(",");
                 }
             } catch (IllegalAccessError e) {
-                continue;
+                //
             }
         }
         if (prefix.isEmpty() && !res.isEmpty()) {

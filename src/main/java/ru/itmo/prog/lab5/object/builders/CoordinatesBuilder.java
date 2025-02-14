@@ -5,11 +5,6 @@ import ru.itmo.prog.lab5.utils.InputFormat;
 import ru.itmo.prog.lab5.utils.ScannerHandler;
 import ru.itmo.prog.lab5.utils.StreamHandler;
 
-import java.util.Scanner;
-import java.util.function.Supplier;
-
-import static java.lang.System.exit;
-
 public class CoordinatesBuilder extends Builder {
     public CoordinatesBuilder(StreamHandler stream, ScannerHandler scanner, InputFormat inputFormat) {
         super(stream, scanner, inputFormat);

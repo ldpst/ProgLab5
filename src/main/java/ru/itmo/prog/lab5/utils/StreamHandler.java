@@ -3,8 +3,6 @@ package ru.itmo.prog.lab5.utils;
 
 import java.io.PrintStream;
 
-import static java.lang.System.exit;
-
 /**
  * Класс кастомного потока вывода
  *

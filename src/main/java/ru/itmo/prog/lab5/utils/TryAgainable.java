@@ -7,6 +7,6 @@ import java.util.function.Supplier;
  *
  * @author ldpst
  */
-public interface TryAganable {
-    abstract Object tryAgain(Supplier<Object> action);
+public interface TryAgainable {
+    Object tryAgain(Supplier<Object> action);
 }
