@@ -4,12 +4,16 @@ import ru.itmo.prog.lab5.object.*;
 import ru.itmo.prog.lab5.utils.StreamHandler;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+
+import static java.lang.System.exit;
 
 /**
  * Метод для загрузки и сохранения коллекции в csv файл
@@ -29,41 +33,57 @@ public class CSVManager {
 
     public void loadFromCSV() {
         String fileName = loadFileNameFromEnvironment();
+
         if (fileName == null) {
             return;
         }
         long maxId = 0;
         try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
-            String line = br.readLine();
-            if (line == null) {
-                stream.printErr("В файле отсутствует строка-заголовок\n");
-                return;
-            }
-            this.header = line.split(",");
-            int id = find("id"),
-                    name = find("name"),
-                    coordinatesX = find("coordinates.x"),
-                    coordinatesY = find("coordinates.y"),
-                    creationDate = find("creationDate"),
-                    oscarCount = find("oscarsCount"),
-                    genre = find("genre"),
-                    mpaaRating = find("mpaaRating"),
-                    operatorName = find("operator.name"),
-                    operatorBirthday = find("operator.birthday"),
-                    operatorWeight = find("operator.weight"),
-                    operatorPassportID = find("operator.passportID");
+            maxId = runWithThisBuffer(br);
+        } catch (IOException e) {
+            stream.printErr("Файл с названием " + fileName + " не найден\n");
+            return;
+        }
+        if (maxId == -1) {
+            return;
+        }
+        Movie.setNextId(maxId + 1);
+    }
 
-            line = br.readLine();
-            while (line != null) {
-                String[] movieLine = line.split(",");
-                DateFormat dateFormat = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.ENGLISH);
-                Date date = null;
-                try {
-                    date = ((movieLine[operatorBirthday].equals("null")) ? null : dateFormat.parse(movieLine[operatorBirthday]));
-                } catch (Exception e) {
-                    stream.printErr("При чтении данных из файла дата " + movieLine[operatorBirthday] + " не была полноценно распознана.\n");
-                }
-                Movie movie = new Movie(Integer.parseInt(movieLine[id]),
+    private long runWithThisBuffer(BufferedReader br) throws IOException {
+        long maxId = 0;
+        String line = br.readLine();
+        if (line == null) {
+            stream.printErr("В файле отсутствует строка-заголовок\n");
+            return -1;
+        }
+        this.header = line.split(",");
+        int id = find("id"),
+                name = find("name"),
+                coordinatesX = find("coordinates.x"),
+                coordinatesY = find("coordinates.y"),
+                creationDate = find("creationDate"),
+                oscarCount = find("oscarsCount"),
+                genre = find("genre"),
+                mpaaRating = find("mpaaRating"),
+                operatorName = find("operator.name"),
+                operatorBirthday = find("operator.birthday"),
+                operatorWeight = find("operator.weight"),
+                operatorPassportID = find("operator.passportID");
+
+        line = br.readLine();
+        while (line != null) {
+            String[] movieLine = line.split(",");
+            DateFormat dateFormat = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.ENGLISH);
+            Date date = null;
+            try {
+                date = ((movieLine[operatorBirthday].equals("null")) ? null : dateFormat.parse(movieLine[operatorBirthday]));
+            } catch (Exception e) {
+                stream.printErr("При чтении данных из файла дата " + movieLine[operatorBirthday] + " не была полноценно распознана.\n");
+            }
+            Movie movie;
+            try {
+                movie = new Movie(Integer.parseInt(movieLine[id]),
                         movieLine[name],
                         new Coordinates(Float.parseFloat(movieLine[coordinatesX]),
                                 Integer.parseInt(movieLine[coordinatesY])),
@@ -78,16 +98,16 @@ public class CSVManager {
                                         Long.parseLong(movieLine[operatorWeight]),
                                         movieLine[operatorPassportID]
                                 )));
-                collectionManager.add(movie);
-                maxId = Long.max(maxId, movie.getId());
-                line = br.readLine();
+            } catch (NumberFormatException e) {
+                stream.printErr("Где-то в файле " + loadFileNameFromEnvironment() + " введена неизвестная строка вместо числа c:\n");
+                exit(-1);
+                return -1;
             }
-
-        } catch (IOException e) {
-            stream.printErr("Файл с названием " + fileName + " не найден");
-            return;
+            collectionManager.add(movie);
+            maxId = Long.max(maxId, movie.getId());
+            line = br.readLine();
         }
-        Movie.setNextId(maxId + 1);
+        return maxId;
     }
 
     /**
@@ -102,7 +122,7 @@ public class CSVManager {
             stream.printErr("Переменная окружения с названием файла Lab5FileName пуста\n");
             return null;
         }
-        return "config/" + filePath + ".csv";
+        return filePath;
     }
 
     /**
