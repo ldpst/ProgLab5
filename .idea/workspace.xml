@@ -9,12 +9,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2d96a76b-2679-40b6-8eff-b8e4bdf322c6" name="Changes" comment="lab ready!!!!!">
+    <list default="true" id="2d96a76b-2679-40b6-8eff-b8e4bdf322c6" name="Changes" comment="lab ready1!!!!!">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/object/MovieGenre.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/object/MovieGenre.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/object/MpaaRating.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/object/MpaaRating.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/object/builders/GenreBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/object/builders/GenreBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/utils/Runner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/utils/Runner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/Lab5InputFile.csv" beforeDir="false" afterPath="$PROJECT_DIR$/config/Lab5InputFile.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/ru/itmo/prog/lab5/managers/CollectionManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/ru/itmo/prog/lab5/managers/CollectionManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/ru/itmo/prog/lab5/object/MovieGenre.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/ru/itmo/prog/lab5/object/MovieGenre.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/ru/itmo/prog/lab5/object/MpaaRating.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/ru/itmo/prog/lab5/object/MpaaRating.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/managers/CollectionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/managers/CollectionManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/object/Coordinates.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/object/Coordinates.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -274,7 +276,7 @@
       <workItem from="1740555735770" duration="1774000" />
       <workItem from="1740593064431" duration="5744000" />
       <workItem from="1740764127725" duration="123000" />
-      <workItem from="1740764257399" duration="1661000" />
+      <workItem from="1740764257399" duration="3378000" />
     </task>
     <task id="LOCAL-00001" summary="upload">
       <option name="closed" value="true" />
@@ -420,7 +422,15 @@
       <option name="project" value="LOCAL" />
       <updated>1739496374980</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="lab ready1!!!!!">
+      <option name="closed" value="true" />
+      <created>1740766124396</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1740766124396</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -431,7 +441,8 @@
     <MESSAGE value="fi" />
     <MESSAGE value="fix info and date" />
     <MESSAGE value="lab ready!!!!!" />
-    <option name="LAST_COMMIT_MESSAGE" value="lab ready!!!!!" />
+    <MESSAGE value="lab ready1!!!!!" />
+    <option name="LAST_COMMIT_MESSAGE" value="lab ready1!!!!!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
