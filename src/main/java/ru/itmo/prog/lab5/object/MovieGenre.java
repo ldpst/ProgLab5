@@ -2,6 +2,7 @@ package ru.itmo.prog.lab5.object;
 
 /**
  * Класс жанра фильма
+ *
  * @author ldpst
  */
 public enum MovieGenre {
@@ -16,6 +17,22 @@ public enum MovieGenre {
      * @return результат проверки
      */
     public static MovieGenre checkOf(String s) {
-        return MovieGenre.valueOf(s.toUpperCase());
+        MovieGenre genre;
+        try {
+            genre = MovieGenre.valueOf(s.toUpperCase());
+        } catch (IllegalArgumentException e) {
+            genre = null;
+        }
+        if (genre == null) {
+            try {
+                genre = values()[Integer.parseInt(s) - 1];
+            } catch (NumberFormatException | IndexOutOfBoundsException e) {
+                //
+            }
+        }
+        if (genre == null) {
+            throw new IllegalArgumentException();
+        }
+        return genre;
     }
 }

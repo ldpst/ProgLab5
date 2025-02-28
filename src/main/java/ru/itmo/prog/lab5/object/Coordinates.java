@@ -42,7 +42,7 @@ public record Coordinates(Float x, int y) implements Validatable, Comparable<Coo
     }
 
     private double countVectorLength() {
-        return Math.sqrt(Math.pow((double) x, 2.0) * Math.pow(y, 2.0));
+        return Math.sqrt(Math.pow((double) x, 2.0) + Math.pow(y, 2.0));
     }
 
     @Override

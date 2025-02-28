@@ -35,7 +35,6 @@ public class GenreBuilder extends Builder {
         } catch (IllegalArgumentException e) {
             stream.printErr("Введенный жанр не является одним из предложенных\n");
             return (MovieGenre) tryAgain(this::readGenre);
-//            throw new InputCantBeNullException();
         }
         return genre;
     }

@@ -19,6 +19,22 @@ public enum MpaaRating {
      * @return результат проверки
      */
     public static MpaaRating checkOf(String s) {
-        return MpaaRating.valueOf(s.toUpperCase());
+        MpaaRating genre;
+        try {
+            genre = MpaaRating.valueOf(s.toUpperCase());
+        } catch (IllegalArgumentException e) {
+            genre = null;
+        }
+        if (genre == null) {
+            try {
+                genre = values()[Integer.parseInt(s) - 1];
+            } catch (NumberFormatException | IndexOutOfBoundsException e) {
+                //
+            }
+        }
+        if (genre == null) {
+            throw new IllegalArgumentException();
+        }
+        return genre;
     }
 }
