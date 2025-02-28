@@ -31,6 +31,7 @@ public class Runner {
             mainRunner = this;
             CSVManager csvManager = new CSVManager(stream, commandManager);
             csvManager.loadFromCSV();
+            commands.get("help").run(null);
         }
     }
 

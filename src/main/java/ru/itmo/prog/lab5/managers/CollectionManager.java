@@ -5,7 +5,9 @@ import ru.itmo.prog.lab5.object.MovieGenre;
 import ru.itmo.prog.lab5.object.Person;
 
 import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.Deque;
+import java.util.List;
 
 /**
  * Класс для хранения и управления коллекцией
@@ -139,11 +141,15 @@ public class CollectionManager {
      */
     public int removeGreater(Movie greater) {
         int count = 0;
+        List<Movie> forRemove = new ArrayList<>();
         for (Movie movie : movies) {
             if (greater.compareTo(movie) < 0) {
-                movies.remove(movie);
+                forRemove.add(movie);
                 count++;
             }
+        }
+        for (Movie movie : forRemove) {
+            movies.remove(movie);
         }
         return count;
     }
