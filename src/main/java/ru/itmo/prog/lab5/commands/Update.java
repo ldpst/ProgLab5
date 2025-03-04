@@ -23,9 +23,9 @@ public class Update extends Command {
 
     @Override
     public void run(String[] args) {
-        Long aimId = new IDBuilder(stream, commandManager.getScanner(), args, commandManager.getInputFormat()).build();
+        Long aimId = new IDBuilder(stream, commandManager.getScanner(), args, commandManager.getRunner().getInputFormat()).build();
         if (aimId == null) {
-            if (commandManager.getInputFormat() == InputFormat.FILE) {
+            if (commandManager.getRunner().getInputFormat() == InputFormat.FILE) {
                 commandManager.getRunner().setRunMode(RunMode.ERROR);
             }
             return;
@@ -33,11 +33,11 @@ public class Update extends Command {
         Movie aim = collectionManager.findElemById(aimId);
         if (aim == null) {
             stream.printErr("Объекта под данным id не существует\n");
-            if (commandManager.getInputFormat() == InputFormat.FILE) {
+            if (commandManager.getRunner().getInputFormat() == InputFormat.FILE) {
                 commandManager.getRunner().setRunMode(RunMode.ERROR);
             }
         } else {
-            aim.update(new MovieBuilder(stream, commandManager.getScanner(), commandManager.getInputFormat()).build());
+            aim.update(new MovieBuilder(stream, commandManager.getScanner(), commandManager.getRunner().getInputFormat()).build());
             stream.printSuccess("Замена прошла успешно\n");
         }
     }

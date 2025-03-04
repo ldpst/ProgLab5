@@ -12,7 +12,7 @@ public class CountLessThanGenre extends Command {
 
     @Override
     public void run(String[] args) {
-        MovieGenre genre = new GenreBuilder(stream, commandManager.getScanner(), commandManager.getInputFormat()).build();
+        MovieGenre genre = new GenreBuilder(stream, commandManager.getScanner(), commandManager.getRunner().getInputFormat()).build();
         stream.printSuccess("Количество элементов, значение поля genre которых меньше:\n");
         stream.printf("> %s\n", collectionManager.countLessTanGenre(genre));
     }

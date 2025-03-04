@@ -17,7 +17,7 @@ public class AddIfMax extends Command {
 
     @Override
     public void run(String[] args) {
-        Movie movie = new MovieBuilder(stream, commandManager.getScanner(), commandManager.getInputFormat()).build();
+        Movie movie = new MovieBuilder(stream, commandManager.getScanner(), commandManager.getRunner().getInputFormat()).build();
         if (movie.compareTo(collectionManager.getMax()) > 0) {
             collectionManager.add(movie);
             stream.printSuccess("Элемент успешно добавлен\n");

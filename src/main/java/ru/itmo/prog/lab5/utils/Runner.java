@@ -10,27 +10,23 @@ import java.util.ArrayList;
 import java.util.Map;
 
 public class Runner {
-    private final CollectionManager collectionManager;
-
     private final ScannerHandler scanner;
     private final StreamHandler stream;
-    private final CommandManager commandManager;
     private final Map<String, Command> commands;
 
-    private InputFormat inputFormat;
-    private InputFormat oldInputFormat;
+    private final InputFormat inputFormat;
+    private final InputFormat oldInputFormat;
     private RunMode runMode = RunMode.RUN;
 
     public static ArrayList<String> usedScripts = new ArrayList<>();
 
     public Runner(StreamHandler stream, CollectionManager collectionManager, InputStream inputStream, InputFormat inputFormat) {
-        this.collectionManager = collectionManager;
         this.stream = stream;
         this.inputFormat = inputFormat;
         oldInputFormat = this.stream.getInputFormat();
         this.stream.setInputFormat(inputFormat);
         scanner = new ScannerHandler(new InputStreamReader(inputStream));
-        commandManager = new CommandManager(stream, scanner, this, collectionManager);
+        CommandManager commandManager = new CommandManager(stream, scanner, this, collectionManager);
         commands = commandManager.getCommands();
     }
 

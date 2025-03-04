@@ -22,9 +22,9 @@ public class RemoveById extends Command {
 
     @Override
     public void run(String[] args) {
-        Long aimId = new IDBuilder(stream, commandManager.getScanner(), args, commandManager.getInputFormat()).build();
+        Long aimId = new IDBuilder(stream, commandManager.getScanner(), args, commandManager.getRunner().getInputFormat()).build();
         if (aimId == null) {
-            if (commandManager.getInputFormat() == InputFormat.FILE) {
+            if (commandManager.getRunner().getInputFormat() == InputFormat.FILE) {
                 commandManager.getRunner().setRunMode(RunMode.ERROR);
             }
             return;
@@ -32,7 +32,7 @@ public class RemoveById extends Command {
         Movie aim = collectionManager.findElemById(aimId);
         if (aim == null) {
             stream.printErr("Объекта под данным id не существует\n");
-            if (commandManager.getInputFormat() == InputFormat.FILE) {
+            if (commandManager.getRunner().getInputFormat() == InputFormat.FILE) {
                 commandManager.getRunner().setRunMode(RunMode.ERROR);
             }
             return;

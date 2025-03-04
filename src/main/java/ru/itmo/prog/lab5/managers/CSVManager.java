@@ -35,7 +35,7 @@ public class CSVManager {
         if (fileName == null) {
             return;
         }
-        long maxId = 0;
+        long maxId;
         try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
             maxId = runWithThisBuffer(br);
         } catch (IOException e) {

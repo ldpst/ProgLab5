@@ -18,11 +18,9 @@ public class CommandManager {
     private final Map<String, Command> commands = new LinkedHashMap<>();
 
     private final StreamHandler stream;
-    private ScannerHandler scanner;
+    private final ScannerHandler scanner;
     private final Runner runner;
     private final CollectionManager collectionManager;
-
-    private InputFormat inputFormat;
 
     public CommandManager(StreamHandler stream, ScannerHandler scanner, Runner runner, CollectionManager collectionManager) {
         this.stream = stream;
@@ -48,10 +46,6 @@ public class CommandManager {
         addCommand("count_less_than_genre", new CountLessThanGenre(this));
     }
 
-    public InputFormat getInputFormat() {
-        return inputFormat;
-    }
-
     public void addCommand(String commandName, Command command) {
         commands.put(commandName, command);
     }
@@ -74,9 +68,5 @@ public class CommandManager {
 
     public StreamHandler getStream() {
         return stream;
-    }
-
-    public void setInputFormat(InputFormat inputFormat) {
-        this.inputFormat = inputFormat;
     }
 }

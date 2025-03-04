@@ -16,7 +16,7 @@ public class CountByOperator extends Command {
         if (args.length == 2 && args[1].equals("null")) {
             operator = null;
         } else {
-            operator = new PersonBuilder(stream, commandManager.getScanner(), commandManager.getInputFormat()).build();
+            operator = new PersonBuilder(stream, commandManager.getScanner(), commandManager.getRunner().getInputFormat()).build();
         }
         stream.printSuccess("Количество элементов, значение поля operator которых равно заданному:\n");
         stream.printf("> %s\n", collectionManager.countByOperator(operator));
