@@ -1,9 +1,7 @@
 package ru.itmo.prog.lab5.commands;
 
-import ru.itmo.prog.lab5.managers.CollectionManager;
 import ru.itmo.prog.lab5.managers.CommandManager;
 import ru.itmo.prog.lab5.object.Movie;
-import ru.itmo.prog.lab5.utils.StreamHandler;
 
 import java.io.FileOutputStream;
 import java.io.IOException;

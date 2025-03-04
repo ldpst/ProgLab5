@@ -1,7 +1,6 @@
 package ru.itmo.prog.lab5.commands;
 
 import ru.itmo.prog.lab5.managers.CommandManager;
-import ru.itmo.prog.lab5.utils.StreamHandler;
 
 /**
  * Класс команды help

@@ -2,7 +2,6 @@ package ru.itmo.prog.lab5.commands;
 
 import ru.itmo.prog.lab5.managers.CommandManager;
 import ru.itmo.prog.lab5.utils.RunMode;
-import ru.itmo.prog.lab5.utils.StreamHandler;
 
 public class Exit extends Command {
 

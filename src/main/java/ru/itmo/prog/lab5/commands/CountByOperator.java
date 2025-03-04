@@ -1,10 +1,8 @@
 package ru.itmo.prog.lab5.commands;
 
-import ru.itmo.prog.lab5.managers.CollectionManager;
 import ru.itmo.prog.lab5.managers.CommandManager;
 import ru.itmo.prog.lab5.object.Person;
 import ru.itmo.prog.lab5.object.builders.PersonBuilder;
-import ru.itmo.prog.lab5.utils.StreamHandler;
 
 public class CountByOperator extends Command {
     public CountByOperator(CommandManager commandManager) {
