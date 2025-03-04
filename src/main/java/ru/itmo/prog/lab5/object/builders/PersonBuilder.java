@@ -33,7 +33,6 @@ public class PersonBuilder extends Builder {
     private String readName() {
         stream.print("> Введите имя человека:\n$ ");
         String name = scanner.nextLine().trim();
-        printIfFileMode(name);
         if (name.isEmpty()) {
             stream.printErr("Имя не должно быть пустым\n");
             return (String) tryAgain(this::readName);
@@ -51,7 +50,6 @@ public class PersonBuilder extends Builder {
         String format = "dd:MM:yyyy";
         stream.printf("> Введите дату рождения человека (формата %s):\n$ ", format);
         String res = scanner.nextLine().trim();
-        printIfFileMode(res);
         if (res.isEmpty()) {
             return null;
         }
@@ -92,7 +90,6 @@ public class PersonBuilder extends Builder {
     private long readWeight() {
         stream.print("> Введите вес человека:\n$ ");
         String res = scanner.nextLine().trim();
-        printIfFileMode(res);
         if (res.isEmpty()) {
             stream.printErr("Вес не должен быть пустым\n");
             return (long) tryAgain(this::readWeight);
@@ -119,7 +116,6 @@ public class PersonBuilder extends Builder {
     private String readPassportID() {
         stream.print("> Введите паспорт айди:\n$ ");
         String passportID = scanner.nextLine().trim();
-        printIfFileMode(passportID);
         if (passportID.isEmpty()) {
             stream.printErr("Паспорт айди не может быть пустым\n");
             return (String) tryAgain(this::readPassportID);

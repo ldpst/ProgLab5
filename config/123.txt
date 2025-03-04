@@ -1,2 +1,9 @@
-execute_script 1234
+add
+name
+1
+1
+1
+1
+1
+n
 exit

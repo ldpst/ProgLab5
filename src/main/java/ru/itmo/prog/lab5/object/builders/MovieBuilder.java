@@ -36,7 +36,6 @@ public class MovieBuilder extends Builder {
     private String readName() {
         stream.print("> Введите название фильма:\n$ ");
         String name = scanner.nextLine().trim();
-        printIfFileMode(name);
         if (name.isEmpty()) {
             stream.printErr("Название не должно быть пустым\n");
             return (String) tryAgain(this::readName);
@@ -63,7 +62,6 @@ public class MovieBuilder extends Builder {
     private Long readOscarCount() {
         stream.print("> Введите количество оскаров:\n$ ");
         String res = scanner.nextLine().trim();
-        printIfFileMode(res);
         long count;
         try {
             count = Long.parseLong(res);
@@ -95,7 +93,6 @@ public class MovieBuilder extends Builder {
     private MpaaRating readMpaaRating() {
         stream.print("> Введите Мпаа Рейтинг " + Arrays.toString(MpaaRating.values()) + ":\n$ ");
         String res = scanner.nextLine().trim();
-        printIfFileMode(res);
         if (res.isEmpty()) {
             return null;
         }
@@ -117,13 +114,15 @@ public class MovieBuilder extends Builder {
     private Person readPerson() {
         stream.print("> Оператор != null? y/n ");
         String res = scanner.nextLine().trim().toLowerCase();
-        printIfFileMode(res);
         if (res.equals("y")) {
             stream.print("* Ввод оператора\n");
             return new PersonBuilder(stream, scanner, inputFormat).build();
         }
-        if (res.equals("n")) {
+        else if (res.equals("n")) {
             return null;
+        }
+        else {
+            stream.printErr("Введённая строка не соответствует y или n\n");
         }
         return (Person) tryAgain(this::readPerson);
     }

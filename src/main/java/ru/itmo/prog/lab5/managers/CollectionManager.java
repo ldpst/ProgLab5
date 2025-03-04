@@ -3,8 +3,11 @@ package ru.itmo.prog.lab5.managers;
 import ru.itmo.prog.lab5.object.Movie;
 import ru.itmo.prog.lab5.object.MovieGenre;
 import ru.itmo.prog.lab5.object.Person;
+import ru.itmo.prog.lab5.utils.StreamHandler;
 
-import java.util.*;
+import java.util.ArrayDeque;
+import java.util.Deque;
+import java.util.Iterator;
 
 /**
  * Класс для хранения и управления коллекцией
@@ -15,8 +18,9 @@ public class CollectionManager {
     private Deque<Movie> movies = new ArrayDeque<>();
     private final java.time.ZonedDateTime creationTime;
 
-    public CollectionManager() {
-//        loadFromFile();
+    public CollectionManager(StreamHandler stream) {
+        CSVManager csvManager = new CSVManager(stream, this);
+        csvManager.loadFromCSV();
         creationTime = java.time.ZonedDateTime.now();
     }
 

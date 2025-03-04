@@ -7,8 +7,6 @@ import ru.itmo.prog.lab5.utils.TryAgainable;
 
 import java.util.function.Supplier;
 
-import static java.lang.System.exit;
-
 public abstract class Builder implements TryAgainable {
     protected StreamHandler stream;
     protected ScannerHandler scanner;
@@ -36,20 +34,10 @@ public abstract class Builder implements TryAgainable {
      */
     public Object tryAgain(Supplier<Object> action) {
         if (inputFormat.equals(InputFormat.FILE)) {
-            exit(0);
+            stream.printErr("Ошибка в скрипте. Программа прервана");
+            System.exit(1);
         }
         stream.print("* Повторная попытка ввода\n");
         return action.get();
-    }
-
-    /**
-     * Метод для вывода сообщения при вводе из файла
-     *
-     * @param msg сообщение
-     */
-    protected void printIfFileMode(String msg) {
-        if (inputFormat == InputFormat.FILE) {
-            stream.printScriptLine(msg + "\n");
-        }
     }
 }

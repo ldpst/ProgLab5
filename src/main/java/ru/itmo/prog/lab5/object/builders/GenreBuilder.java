@@ -25,7 +25,6 @@ public class GenreBuilder extends Builder {
     private MovieGenre readGenre() {
         stream.print("> Введите жанр " + Arrays.toString(MovieGenre.values()) + ":\n$ ");
         String res = scanner.nextLine().trim();
-        printIfFileMode(res);
         if (res.isEmpty()) {
             return null;
         }

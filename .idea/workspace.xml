@@ -9,14 +9,37 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2d96a76b-2679-40b6-8eff-b8e4bdf322c6" name="Changes" comment="lab ready1!!!!!">
+    <list default="true" id="2d96a76b-2679-40b6-8eff-b8e4bdf322c6" name="Changes" comment="fix commands">
+      <change beforePath="$PROJECT_DIR$/.gradle/8.8/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.8/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.8/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.8/checksums/sha1-checksums.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/Lab5InputFile.csv" beforeDir="false" afterPath="$PROJECT_DIR$/config/Lab5InputFile.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/ru/itmo/prog/lab5/managers/CollectionManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/ru/itmo/prog/lab5/managers/CollectionManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/ru/itmo/prog/lab5/object/MovieGenre.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/ru/itmo/prog/lab5/object/MovieGenre.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/ru/itmo/prog/lab5/object/MpaaRating.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/ru/itmo/prog/lab5/object/MpaaRating.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/123.txt" beforeDir="false" afterPath="$PROJECT_DIR$/config/123.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/ru/itmo/prog/lab5/object/Coordinates.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/ru/itmo/prog/lab5/object/Coordinates.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/ru/itmo/prog/lab5/object/Movie.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/ru/itmo/prog/lab5/object/Movie.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/commands/Add.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/commands/Add.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/commands/CountLessThanGenre.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/commands/CountLessThanGenre.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/commands/ExecuteScript.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/commands/ExecuteScript.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/commands/Max.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/commands/Min.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/commands/RemoveGreater.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/commands/RemoveGreater.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/commands/Size.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/commands/Tail.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/commands/Type.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/commands/getCreationTime.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/managers/CSVManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/managers/CSVManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/managers/CollectionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/managers/CollectionManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/object/Coordinates.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/object/Coordinates.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/managers/CommandManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/managers/CommandManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/object/builders/Builder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/object/builders/Builder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/object/builders/CoordinatesBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/object/builders/CoordinatesBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/object/builders/GenreBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/object/builders/GenreBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/object/builders/MovieBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/object/builders/MovieBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/object/builders/PersonBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/object/builders/PersonBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/utils/Element.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/utils/Runable.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/utils/Runner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/utils/Runner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/utils/ScannerHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/utils/ScannerHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/utils/StreamHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/itmo/prog/lab5/utils/StreamHandler.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -277,6 +300,9 @@
       <workItem from="1740593064431" duration="5744000" />
       <workItem from="1740764127725" duration="123000" />
       <workItem from="1740764257399" duration="3378000" />
+      <workItem from="1741113228327" duration="476000" />
+      <workItem from="1741113714943" duration="1015000" />
+      <workItem from="1741114744108" duration="6812000" />
     </task>
     <task id="LOCAL-00001" summary="upload">
       <option name="closed" value="true" />
@@ -430,7 +456,15 @@
       <option name="project" value="LOCAL" />
       <updated>1740766124396</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="fix commands">
+      <option name="closed" value="true" />
+      <created>1741118030048</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1741118030048</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -442,7 +476,8 @@
     <MESSAGE value="fix info and date" />
     <MESSAGE value="lab ready!!!!!" />
     <MESSAGE value="lab ready1!!!!!" />
-    <option name="LAST_COMMIT_MESSAGE" value="lab ready1!!!!!" />
+    <MESSAGE value="fix commands" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix commands" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

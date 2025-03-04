@@ -25,7 +25,6 @@ public class CoordinatesBuilder extends Builder {
     private Float readX() {
         stream.print("> Введите координату x:\n$ ");
         String res = scanner.nextLine().trim();
-        printIfFileMode(res);
         float x;
         try {
             x = Float.parseFloat(res);
@@ -45,7 +44,6 @@ public class CoordinatesBuilder extends Builder {
     private int readY() {
         stream.print("> Введите координату y:\n$ ");
         String res = scanner.nextLine().trim();
-        printIfFileMode(res);
         int y;
         try {
             y = Integer.parseInt(res);

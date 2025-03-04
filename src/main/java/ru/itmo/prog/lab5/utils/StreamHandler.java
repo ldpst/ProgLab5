@@ -11,6 +11,8 @@ import java.io.PrintStream;
 public class StreamHandler {
     private final PrintStream stream;
 
+    private InputFormat inputFormat = InputFormat.CONSOLE;
+
     private static final String RED = "\u001B[31m";
     private static final String RESET = "\u001B[0m";
     private static final String GREEN = "\u001B[32m";
@@ -26,16 +28,7 @@ public class StreamHandler {
      * @param msg сообщение
      */
     public void printErr(String msg) {
-        print(RED + msg + RESET);
-    }
-
-    /**
-     * Метод для вывода сообщения синим цветом
-     *
-     * @param msg сообщение
-     */
-    public void printScriptLine(String msg) {
-        stream.print(BLUE + msg + RESET);
+        stream.print(RED + msg + RESET);
     }
 
     /**
@@ -44,7 +37,9 @@ public class StreamHandler {
      * @param msg сообщение
      */
     public void print(String msg) {
-        stream.print(msg);
+        if (inputFormat == InputFormat.CONSOLE) {
+            stream.print(msg);
+        }
     }
 
     /**
@@ -63,7 +58,9 @@ public class StreamHandler {
      * @param args   аргументы, заменяемые на %s
      */
     public void printf(String format, Object... args) {
-        stream.printf(format, args);
+        if (inputFormat == InputFormat.CONSOLE) {
+            stream.printf(format, args);
+        }
     }
 
     /**
@@ -83,5 +80,13 @@ public class StreamHandler {
      */
     public void printSuccessf(String format, Object... args) {
         printf(GREEN + format + RESET, args);
+    }
+
+    public void setInputFormat(InputFormat inputFormat) {
+        this.inputFormat = inputFormat;
+    }
+
+    public InputFormat getInputFormat() {
+        return inputFormat;
     }
 }

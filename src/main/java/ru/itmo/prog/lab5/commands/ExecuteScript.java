@@ -1,10 +1,11 @@
 package ru.itmo.prog.lab5.commands;
-import ru.itmo.prog.lab5.managers.CommandManager;
-import ru.itmo.prog.lab5.utils.*;
 
-import java.io.BufferedReader;
+import ru.itmo.prog.lab5.managers.CommandManager;
+import ru.itmo.prog.lab5.utils.InputFormat;
+import ru.itmo.prog.lab5.utils.Runner;
+
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 
 /**
@@ -23,28 +24,23 @@ public class ExecuteScript extends Command {
     public void run(String[] args) {
         if (args.length != 2) {
             stream.printErr("Неверный формат команды\n");
-            if (commandManager.getInputFormat() == InputFormat.FILE) {
-                commandManager.getRunner().setRunMode(RunMode.ERROR);
-            }
             return;
         }
         if (Runner.usedScripts.contains(args[1])) {
             stream.printErr("Запуск скрипта " + args[1] + " вызывает рекурсию\n");
-            if (commandManager.getInputFormat() == InputFormat.FILE) {
-                commandManager.getRunner().setRunMode(RunMode.ERROR);
-            }
-            return;
+            System.exit(1);
         }
         Runner.usedScripts.add(args[1]);
-        try (BufferedReader br = new BufferedReader(new FileReader(args[1]))) {
-            stream.printSuccess("Выполнение скрипта:\n");
-            new Runner(new ScannerHandler(br), stream, commandManager).runScriptMode();
+        try (FileInputStream fis = new FileInputStream(args[1])) {
+            stream.printSuccess("Выполнение скрипта\n");
+            new Runner(stream, collectionManager, fis, InputFormat.FILE).run();
             Runner.usedScripts.remove(args[1]);
+            stream.printSuccess("Скрипт успешно выполнен\n");
         } catch (FileNotFoundException e) {
             stream.printErr("Файл со скриптом не найден\n");
-            if (commandManager.getInputFormat() == InputFormat.FILE) {
-                commandManager.getRunner().setRunMode(RunMode.ERROR);
-            }
+        } catch (NullPointerException e) {
+            stream.printErr("\nВ скрипте отсутствует команда exit. Программа завершена\n");
+            System.exit(0);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

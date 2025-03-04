@@ -4,11 +4,9 @@ import ru.itmo.prog.lab5.object.*;
 import ru.itmo.prog.lab5.utils.StreamHandler;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -26,9 +24,9 @@ public class CSVManager {
 
     private String[] header;
 
-    public CSVManager(StreamHandler stream, CommandManager commandManager) {
+    public CSVManager(StreamHandler stream, CollectionManager collectionManager) {
         this.stream = stream;
-        this.collectionManager = commandManager.getCollectionManager();
+        this.collectionManager = collectionManager;
     }
 
     public void loadFromCSV() {
@@ -117,7 +115,7 @@ public class CSVManager {
      */
     private String loadFileNameFromEnvironment() {
         ProcessBuilder processBuilder = new ProcessBuilder();
-        String filePath = processBuilder.environment().get("Lab5FileName");
+        String filePath = "D:\\Files\\Projects\\java\\ProgLab5\\config\\Lab5InputFile.csv";
         if (filePath == null) {
             stream.printErr("Переменная окружения с названием файла Lab5FileName пуста\n");
             return null;
