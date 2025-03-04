@@ -35,7 +35,7 @@ public class ExecuteScript extends Command {
             return;
         }
         Runner.usedScripts.add(args[1]);
-        try (BufferedReader br = new BufferedReader(new FileReader("config/" + args[1] + ".txt"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader(args[1]))) {
             stream.printSuccess("Выполнение скрипта:\n");
             new Runner(new ScannerHandler(br), stream, commandManager).runScriptMode();
             Runner.usedScripts.remove(args[1]);
