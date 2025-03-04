@@ -12,8 +12,8 @@ import ru.itmo.prog.lab5.utils.StreamHandler;
 public class Head extends Command {
     private final CollectionManager collectionManager;
 
-    public Head(StreamHandler stream, CommandManager commandManager) {
-        super("head", "вывести первый элемент коллекции", stream, commandManager);
+    public Head(CommandManager commandManager) {
+        super("head", "вывести первый элемент коллекции", commandManager);
         this.collectionManager = commandManager.getCollectionManager();
     }
 

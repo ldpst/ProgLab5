@@ -1,6 +1,6 @@
 package ru.itmo.prog.lab5.object;
 
-import ru.itmo.prog.lab5.utils.Element;
+import ru.itmo.prog.lab5.utils.Validatable;
 import ru.itmo.prog.lab5.utils.ValidationError;
 
 import java.time.ZonedDateTime;
@@ -11,8 +11,8 @@ import java.util.Objects;
  *
  * @author ldpst
  */
-public class Movie extends Element
-        implements Comparable<Movie> {
+public class Movie
+        implements Comparable<Movie>, Validatable {
     static long nextId = 1;
 
     private final long id; //Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
@@ -94,7 +94,6 @@ public class Movie extends Element
      *
      * @return id
      */
-    @Override
     public long getId() {
         return this.id;
     }

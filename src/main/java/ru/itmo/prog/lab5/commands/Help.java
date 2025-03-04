@@ -9,17 +9,16 @@ import ru.itmo.prog.lab5.utils.StreamHandler;
  * @author ldpst
  */
 public class Help extends Command {
-    public Help(StreamHandler stream, CommandManager commandManager) {
-        super("help", "вывести справку по доступным командам", stream, commandManager);
+    public Help(CommandManager commandManager) {
+        super("help", "вывести справку по доступным командам", commandManager);
+        collectionManager = commandManager.getCollectionManager();
     }
 
     @Override
     public void run(String[] args) {
         stream.printSuccess("Справка по доступным командам:\n");
         for (Command command : commandManager.getCommands().values()) {
-            if (commandManager.getUserPermission().compareTo(command.getPermission()) <= 0) {
-                stream.printf("> %s : %s\n", command.getName(), command.getDescription());
-            }
+            stream.printf("> %s : %s\n", command.getName(), command.getDescription());
         }
     }
 }

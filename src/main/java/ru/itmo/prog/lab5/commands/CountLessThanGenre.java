@@ -7,10 +7,8 @@ import ru.itmo.prog.lab5.object.builders.GenreBuilder;
 import ru.itmo.prog.lab5.utils.StreamHandler;
 
 public class CountLessThanGenre extends Command {
-    private final CollectionManager collectionManager;
-
     public CountLessThanGenre(StreamHandler stream, CommandManager commandManager) {
-        super("count_less_than_genre genre", "вывести количество элементов, значение поля genre которых меньше заданного", stream, commandManager);
+        super("count_less_than_genre genre", "вывести количество элементов, значение поля genre которых меньше заданного", commandManager);
         collectionManager = commandManager.getCollectionManager();
     }
 

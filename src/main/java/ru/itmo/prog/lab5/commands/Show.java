@@ -16,9 +16,9 @@ import java.util.Deque;
 public class Show extends Command {
     private final CollectionManager collectionManager;
 
-    public Show(StreamHandler stream, CommandManager commandManager) {
-        super("show", "вывести в стандартный поток вывода все элементы коллекции в строковом представлении", stream, commandManager);
-        this.collectionManager = commandManager.getCollectionManager();
+    public Show(CommandManager commandManager) {
+        super("show", "вывести в стандартный поток вывода все элементы коллекции в строковом представлении", commandManager);
+        collectionManager = commandManager.getCollectionManager();
     }
 
     @Override

@@ -12,8 +12,8 @@ import ru.itmo.prog.lab5.utils.StreamHandler;
 public class MaxByOperator extends Command {
     private final CollectionManager collectionManager;
 
-    public MaxByOperator(StreamHandler stream, CommandManager commandManager) {
-        super("max_by_operator", "вывести любой объект из коллекции, значение поля operator которого является максимальным", stream, commandManager);
+    public MaxByOperator(CommandManager commandManager) {
+        super("max_by_operator", "вывести любой объект из коллекции, значение поля operator которого является максимальным", commandManager);
         collectionManager = commandManager.getCollectionManager();
     }
 

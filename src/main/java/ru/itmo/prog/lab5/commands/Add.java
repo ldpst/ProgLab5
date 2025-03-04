@@ -13,10 +13,8 @@ import ru.itmo.prog.lab5.utils.StreamHandler;
  * @author ldspt
  */
 public class Add extends Command {
-    private final CollectionManager collectionManager;
-
-    public Add(StreamHandler stream, CommandManager commandManager) {
-        super("add {Movie}", "добавить новый элемент в коллекцию", stream, commandManager);
+    public Add(CommandManager commandManager) {
+        super("add {Movie}", "добавить новый элемент в коллекцию", commandManager);
         this.collectionManager = commandManager.getCollectionManager();
     }
 

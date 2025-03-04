@@ -6,8 +6,9 @@ import ru.itmo.prog.lab5.utils.StreamHandler;
 
 public class Exit extends Command {
 
-    public Exit(StreamHandler stream, CommandManager commandManager) {
-        super("exit", "завершить программу (без сохранения в файл)", stream, commandManager);
+    public Exit(CommandManager commandManager) {
+        super("exit", "завершить программу (без сохранения в файл)", commandManager);
+        collectionManager = commandManager.getCollectionManager();
     }
 
     @Override

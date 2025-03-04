@@ -7,10 +7,8 @@ import ru.itmo.prog.lab5.object.builders.PersonBuilder;
 import ru.itmo.prog.lab5.utils.StreamHandler;
 
 public class CountByOperator extends Command {
-    private final CollectionManager collectionManager;
-
-    public CountByOperator(StreamHandler stream, CommandManager commandManager) {
-        super("count_by_operator operator", "вывести количество элементов, значение поля operator которых равно заданному", stream, commandManager);
+    public CountByOperator(CommandManager commandManager) {
+        super("count_by_operator operator", "вывести количество элементов, значение поля operator которых равно заданному", commandManager);
         collectionManager = commandManager.getCollectionManager();
     }
 

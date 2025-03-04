@@ -16,8 +16,8 @@ import ru.itmo.prog.lab5.utils.StreamHandler;
 public class RemoveById extends Command {
     private final CollectionManager collectionManager;
 
-    public RemoveById(StreamHandler stream, CommandManager commandManager) {
-        super("remove_by_id", "удалить элемент из коллекции по его id", stream, commandManager);
+    public RemoveById(CommandManager commandManager) {
+        super("remove_by_id", "удалить элемент из коллекции по его id", commandManager);
         this.collectionManager = commandManager.getCollectionManager();
     }
 

@@ -14,8 +14,9 @@ import java.io.IOException;
  */
 public class ExecuteScript extends Command {
 
-    public ExecuteScript(StreamHandler stream, CommandManager commandManager) {
-        super("execute_script file_name", "считать и исполнить скрипт из указанного файла. В скрипте содержатся команды в таком же виде, в котором их вводит пользователь в интерактивном режиме", stream, commandManager);
+    public ExecuteScript(CommandManager commandManager) {
+        super("execute_script file_name", "считать и исполнить скрипт из указанного файла. В скрипте содержатся команды в таком же виде, в котором их вводит пользователь в интерактивном режиме", commandManager);
+        collectionManager = commandManager.getCollectionManager();
     }
 
     @Override

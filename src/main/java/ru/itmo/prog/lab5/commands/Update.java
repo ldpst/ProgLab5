@@ -17,8 +17,8 @@ import ru.itmo.prog.lab5.utils.StreamHandler;
 public class Update extends Command {
     private final CollectionManager collectionManager;
 
-    public Update(StreamHandler stream, CommandManager commandManager) {
-        super("update id {Movie}", "обновить значение элемента коллекции, id которого равен заданному", stream, commandManager);
+    public Update(CommandManager commandManager) {
+        super("update id {Movie}", "обновить значение элемента коллекции, id которого равен заданному", commandManager);
         this.collectionManager = commandManager.getCollectionManager();
     }
 

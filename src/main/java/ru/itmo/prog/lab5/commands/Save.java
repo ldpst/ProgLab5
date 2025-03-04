@@ -16,11 +16,9 @@ import java.util.LinkedHashMap;
  * @author ldpst
  */
 public class Save extends Command {
-    private final CollectionManager collectionManager;
-
-    public Save(StreamHandler stream, CommandManager commandManager) {
-        super("save", "сохранить коллекцию в файл", stream, commandManager);
-        this.collectionManager = commandManager.getCollectionManager();
+    public Save(CommandManager commandManager) {
+        super("save", "сохранить коллекцию в файл", commandManager);
+        collectionManager = commandManager.getCollectionManager();
     }
 
     @Override

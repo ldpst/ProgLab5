@@ -1,8 +1,8 @@
 package ru.itmo.prog.lab5.commands;
 
+import ru.itmo.prog.lab5.managers.CollectionManager;
 import ru.itmo.prog.lab5.managers.CommandManager;
-import ru.itmo.prog.lab5.utils.Permissions;
-import ru.itmo.prog.lab5.utils.Runable;
+import ru.itmo.prog.lab5.utils.ScannerHandler;
 import ru.itmo.prog.lab5.utils.StreamHandler;
 
 /**
@@ -10,23 +10,22 @@ import ru.itmo.prog.lab5.utils.StreamHandler;
  *
  * @author ldpst
  */
-public abstract class Command implements Runable {
+public abstract class Command {
     private final String name;
     private final String description;
-    protected final StreamHandler stream;
     protected final CommandManager commandManager;
-    protected final Permissions permission;
 
-    protected Command(String commandName, String description, StreamHandler stream, CommandManager commandManager, Permissions permission) {
+    protected CollectionManager collectionManager;
+    protected StreamHandler stream;
+    protected ScannerHandler scanner;
+
+
+    protected Command(String commandName, String description, CommandManager commandManager) {
         this.name = commandName;
         this.description = description;
-        this.stream = stream;
         this.commandManager = commandManager;
-        this.permission = permission;
-    }
-
-    public Command(String commandName, String description, StreamHandler stream, CommandManager commandManager) {
-        this(commandName, description, stream, commandManager, Permissions.USER);
+        this.scanner = commandManager.getScanner();
+        this.stream = commandManager.getStream();
     }
 
     /**
@@ -34,13 +33,7 @@ public abstract class Command implements Runable {
      *
      * @param args данные команды
      */
-    public void runWithPermission(String[] args) {
-        if (permission.compareTo(commandManager.getUserPermission()) < 0) {
-            stream.printErr("Недостаточно прав для выполнения команды\n");
-            return;
-        }
-        run(args);
-    }
+    public abstract void run(String[] args);
 
     /**
      * Метод, возвращающий название команды
@@ -58,14 +51,5 @@ public abstract class Command implements Runable {
      */
     public String getDescription() {
         return description;
-    }
-
-    /**
-     * Метод, возвращающий необходимые права доступа
-     *
-     * @return permission
-     */
-    public Permissions getPermission() {
-        return permission;
     }
 }

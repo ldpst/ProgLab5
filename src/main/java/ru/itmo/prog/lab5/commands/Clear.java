@@ -10,10 +10,8 @@ import ru.itmo.prog.lab5.utils.StreamHandler;
  * @author ldpst
  */
 public class Clear extends Command {
-    private final CollectionManager collectionManager;
-
-    public Clear(StreamHandler stream, CommandManager commandManager) {
-        super("clear", "очистить коллекцию", stream, commandManager);
+    public Clear(CommandManager commandManager) {
+        super("clear", "очистить коллекцию", commandManager);
         this.collectionManager = commandManager.getCollectionManager();
     }
 

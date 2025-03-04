@@ -12,10 +12,8 @@ import ru.itmo.prog.lab5.utils.StreamHandler;
  * @author ldpst
  */
 public class RemoveGreater extends Command {
-    private final CollectionManager collectionManager;
-
-    public RemoveGreater(StreamHandler stream, CommandManager commandManager) {
-        super("remove_greater {element}", "удалить из коллекции все элементы, превышающие заданный", stream, commandManager);
+    public RemoveGreater(CommandManager commandManager) {
+        super("remove_greater {element}", "удалить из коллекции все элементы, превышающие заданный", commandManager);
         collectionManager = commandManager.getCollectionManager();
     }
 

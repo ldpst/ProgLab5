@@ -12,10 +12,8 @@ import ru.itmo.prog.lab5.utils.StreamHandler;
  * @author ldpst
  */
 public class AddIfMax extends Command {
-    private final CollectionManager collectionManager;
-
-    public AddIfMax(StreamHandler stream, CommandManager commandManager) {
-        super("add_if_max {element}", "добавить новый элемент в коллекцию, если его значение превышает значение наибольшего элемента этой коллекции", stream, commandManager);
+    public AddIfMax(CommandManager commandManager) {
+        super("add_if_max {element}", "добавить новый элемент в коллекцию, если его значение превышает значение наибольшего элемента этой коллекции", commandManager);
         collectionManager = commandManager.getCollectionManager();
     }
 
