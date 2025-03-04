@@ -1,7 +1,6 @@
 package ru.itmo.prog.lab5.managers;
 
 import ru.itmo.prog.lab5.commands.*;
-import ru.itmo.prog.lab5.utils.InputFormat;
 import ru.itmo.prog.lab5.utils.Runner;
 import ru.itmo.prog.lab5.utils.ScannerHandler;
 import ru.itmo.prog.lab5.utils.StreamHandler;
